@@ -42,12 +42,19 @@ your system's light or dark setting.
 
 ## Installation
 
-Download the binary for your architecture from the releases page, check it against
-`SHA256SUMS`, and put it on your `PATH`:
+Download the binary for your architecture (`linux-amd64` or `linux-arm64`) and
+`SHA256SUMS` from the [releases page](https://github.com/dflock/apt-history-viewer/releases),
+check the download, and put it on your `PATH`:
 
 ```sh
 sha256sum -c --ignore-missing SHA256SUMS
 install -m 755 apt-history-viewer-*-linux-amd64 ~/.local/bin/apt-history-viewer
+```
+
+Or, with Go installed:
+
+```sh
+go install github.com/dflock/apt-history-viewer/cmd/apt-history-viewer@latest
 ```
 
 Or build it from source:
