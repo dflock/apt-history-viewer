@@ -68,3 +68,19 @@ history.log stanzas and what each one tests:
 | `rotation-dateext/` | `history.log-YYYYMMDD` (the date is the *rotation* day, after the content) | ordered by first timestamp, not by name |
 | `root-packagekit/` | input root with no dpkg.log, no aptitude log | works with only history.log; warnings, no failure |
 | `garbage/*.log` | invalid dates, unbalanced parens, NUL/0xFF bytes, missing fields | warnings only, never panic. Also seed corpus for `go test -fuzz` |
+
+## `golden/`
+
+| File | Contents |
+|---|---|
+| `real.json` | `--json -i ../../testdata/real` output, checked by `cmd/apt-history-viewer` tests. After an intended output change: `go test ./cmd/... -update`, then review the diff |
+
+## Fuzz corpora
+
+`go test -fuzz` saves failing inputs under `internal/<pkg>/testdata/fuzz/FuzzParse/`.
+They are committed and run as regression tests on every `go test`. Inputs found so far:
+
+* `apthistory/…/37fe208bedaa3c2b`: `Start-Date:0001-01-01 0:00:00`. Dates outside
+  1990–2100 are now rejected as corrupt.
+* `dpkglog/…/590ca2b1d61abe0e`: time going backwards inside a run (as DST fall-back
+  does with dpkg's local timestamps). A run's `End` is now the latest time seen, not the last line's.
