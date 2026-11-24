@@ -70,7 +70,7 @@ func TestRenderEmbedsReportSafely(t *testing.T) {
 	if !strings.Contains(m[1], `"start":"2026-05-10T09:02:18+01:00"`) {
 		t.Error("times must keep their local offset")
 	}
-	for _, need := range []string{`id="timeline"`, `id="overview"`, `id="detail"`, "window.AHV", "prefers-color-scheme"} {
+	for _, need := range []string{`id="timeline"`, `id="overview"`, `id="detail"`, `id="pkg-q"`, `id="tx-table"`, `id="f-text"`, "window.AHV", "prefers-color-scheme"} {
 		if !strings.Contains(html, need) {
 			t.Errorf("page lacks %s", need)
 		}

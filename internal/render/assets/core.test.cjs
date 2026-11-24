@@ -108,3 +108,45 @@ test('bins: per day, or per week over a year', () => {
   assert.equal(weeks.bins.length, 1); // Thu 1 Jan and Fri 2 Jan 2026 share a Monday-based week
   assert.equal(new Date(weeks.bins[0].t0).getUTCDay(), 1);
 });
+
+test('matches: origin, change type, problems and text filters', () => {
+  const raw = { commandline: 'apt install Firefox', tool: 'apt', user: 'testuser', changes: [{ name: 'firefox' }, { name: 'libnss3' }] };
+  const tx = { lane: 'user-cli', bad: false, groups: new Set(['install']), hay: A.haystack(raw) };
+  const all = () => ({ origins: new Set(['user-cli', 'unattended']), groups: new Set(['install', 'upgrade', 'remove']), text: '', problems: false });
+  assert.ok(A.matches(tx, all()));
+  assert.ok(!A.matches(tx, { ...all(), origins: new Set(['unattended']) }));
+  assert.ok(!A.matches(tx, { ...all(), groups: new Set(['upgrade']) }));
+  assert.ok(A.matches(tx, { ...all(), groups: new Set(['upgrade', 'install']) }));
+  assert.ok(!A.matches(tx, { ...all(), problems: true }));
+  assert.ok(A.matches(tx, { ...all(), text: '  LIBNSS  test ' }), 'every word, any case');
+  assert.ok(!A.matches(tx, { ...all(), text: 'libnss chrome' }));
+  const empty = { ...tx, groups: new Set() };
+  assert.ok(A.matches(empty, all()), 'no changes: shown when all types are on');
+  assert.ok(!A.matches(empty, { ...all(), groups: new Set(['install', 'upgrade']) }));
+});
+
+test('lifetimes: installed spans from events', () => {
+  const ev = (at, action) => ({ at, action });
+  assert.deepEqual(A.lifetimes([ev(10, 'install'), ev(20, 'upgrade'), ev(30, 'remove'), ev(31, 'purge'), ev(40, 'install')], false, 0, 100),
+    [[10, 30], [40, 100]]);
+  assert.deepEqual(A.lifetimes([ev(20, 'upgrade')], true, 0, 100), [[0, 100]], 'present before the logs');
+  assert.deepEqual(A.lifetimes([ev(20, 'remove')], true, 0, 100), [[0, 20]]);
+  assert.deepEqual(A.lifetimes([], true, 0, 100), [[0, 100]]);
+  assert.deepEqual(A.lifetimes([], false, 0, 100), []);
+});
+
+test('searchPackages ranks exact, prefix, substring', () => {
+  const pk = (name, arch = 'amd64') => ({ name, arch });
+  const pkgs = [pk('libfirefox-extra'), pk('firefox-locale-en'), pk('firefox'), pk('libc6'), pk('libc6', 'i386'), pk('firefoxpwa')];
+  assert.deepEqual(A.searchPackages(pkgs, 'Firefox', 10).map((p) => p.name), ['firefox', 'firefoxpwa', 'firefox-locale-en', 'libfirefox-extra']);
+  assert.deepEqual(A.searchPackages(pkgs, 'firefox', 2).length, 2);
+  assert.deepEqual(A.searchPackages(pkgs, 'libc6:i3', 10), [pk('libc6', 'i386')]);
+  assert.deepEqual(A.searchPackages(pkgs, '  ', 10), []);
+});
+
+test('sortBy is stable, handles numbers, strings and missing values', () => {
+  const rows = [{ k: 2, s: 'b' }, { k: 1, s: 'a' }, { k: 2, s: 'c' }, { k: undefined, s: 'd' }];
+  assert.deepEqual(A.sortBy(rows, (r) => r.k, 1).map((r) => r.s), ['d', 'a', 'b', 'c']);
+  assert.deepEqual(A.sortBy(rows, (r) => r.k, -1).map((r) => r.s), ['b', 'c', 'a', 'd']);
+  assert.deepEqual(A.sortBy(rows, (r) => r.s, -1).map((r) => r.s), ['d', 'c', 'b', 'a']);
+});

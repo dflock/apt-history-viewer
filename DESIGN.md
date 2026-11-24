@@ -452,6 +452,25 @@ Light and dark themes via `prefers-color-scheme`. Works at narrow widths (lanes 
   to a temporary file and renamed into place. With several `--input`, `-o` is a directory and
   repeated hosts get `-2`, `-3`. Live machine: 1.07 MB of HTML.
 
+### 6.2 Details settled while building M4
+
+* **Filters** (in the timeline card) apply to the timeline, the overview bars and the table: origin
+  toggles (hidden origins drop their lane), change-type toggles (a transaction shows if it has any
+  change of a selected type), "errors & incomplete only", and a text box. Every word in the text box
+  must appear in the command line, tool, user, error or a package name (`AHV.matches`).
+* **Brush**: drag on the overview, or Shift+drag on the timeline, to zoom to a range. A plain
+  click on the overview still re-centres the timeline.
+* **Package view**: the search ranks exact matches, then prefix, then substring, shortest first. `name:arch`
+  narrows the arch. Selecting a package (from search, or by clicking a package name in the detail
+  panel) adds a lane above the origin lanes. It shows installed spans (`AHV.lifetimes`: from the
+  log start for PreHistory packages, ending at each remove or purge) and ▲ install, ● upgrade,
+  ▼ remove marks, each linked to its transaction. The card shows the current version, the
+  auto/manual mark, PreHistory, and an event table, newest first.
+* **Transactions table** lists the filtered transactions overlapping the visible range (the title
+  says "All transactions" at full zoom). It is sortable by any column, rendered 200 rows at a
+  time with "Show more", and redrawn 150 ms after zooming stops rather than on every frame.
+* **Dark mode** shipped in M3 (`prefers-color-scheme`).
+
 ## 7. CLI
 
 ```

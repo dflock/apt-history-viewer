@@ -177,7 +177,81 @@
     return { size, first, bins: [...map.values()].sort((a, b) => a.t0 - b.t0) };
   }
 
-  const AHV = { SEC, MIN, HOUR, DAY, wall, fmt, fmtDate, fmtDuration, scale, actionGroup, ticks, radius, cluster, layout, zoom, clampRange, bins };
+  /** Lower-cased text the filter box searches: command, tool, user, error, package names. */
+  function haystack(t) {
+    return [t.commandline, t.tool, t.user, t.error, ...t.changes.map((c) => c.name)]
+      .filter(Boolean).join('\n').toLowerCase();
+  }
+
+  /**
+   * Whether a prepared transaction passes the filters.
+   * tx: {lane, bad, groups: Set of change groups present, hay: haystack()}.
+   * f: {origins: Set, groups: Set, text, problems}. A transaction passes the
+   * change-type filter if it has any change of a selected type; transactions
+   * without changes only show when every type is selected. Every word of the
+   * text must appear.
+   */
+  function matches(tx, f) {
+    if (!f.origins.has(tx.lane)) return false;
+    if (f.problems && !tx.bad) return false;
+    if (f.groups.size < 3 && ![...tx.groups].some((g) => f.groups.has(g))) return false;
+    for (const w of (f.text || '').toLowerCase().split(/\s+/)) if (w && !tx.hay.includes(w)) return false;
+    return true;
+  }
+
+  /**
+   * When a package was installed: [[from, to], …] in wall ms, from its events
+   * ({at, action}, in time order). A package present before the logs begin
+   * starts installed at f0; one still installed runs to f1.
+   */
+  function lifetimes(events, preHistory, f0, f1) {
+    const out = [];
+    let from = preHistory ? f0 : null;
+    for (const e of events) {
+      if (actionGroup(e.action) === 'remove') {
+        if (from != null) out.push([from, e.at]);
+        from = null;
+      } else if (from == null) {
+        from = e.at;
+      }
+    }
+    if (from != null) out.push([from, f1]);
+    return out;
+  }
+
+  /**
+   * Package search: exact name, then prefix, then substring matches, shorter
+   * names first. "name:arch" narrows by arch. Returns at most limit packages.
+   */
+  function searchPackages(pkgs, query, limit) {
+    let [q, arch] = query.trim().toLowerCase().split(':');
+    if (!q) return [];
+    const hits = [];
+    for (const p of pkgs) {
+      const n = p.name.toLowerCase(), i = n.indexOf(q);
+      if (i < 0 || (arch && !(p.arch || '').startsWith(arch))) continue;
+      hits.push([n === q ? 0 : i === 0 ? 1 : 2, n.length, n, p]);
+    }
+    hits.sort((a, b) => a[0] - b[0] || a[1] - b[1] || (a[2] < b[2] ? -1 : a[2] > b[2] ? 1 : 0));
+    return hits.slice(0, limit).map((h) => h[3]);
+  }
+
+  /** Stable sort of rows by key(row) (number or string), dir 1 or -1. */
+  function sortBy(rows, key, dir) {
+    return rows
+      .map((r, i) => [key(r), i, r])
+      .sort((a, b) => {
+        const x = a[0] ?? '', y = b[0] ?? '';
+        const c = typeof x === 'number' && typeof y === 'number' ? x - y : String(x).localeCompare(String(y));
+        return c * dir || a[1] - b[1];
+      })
+      .map((e) => e[2]);
+  }
+
+  const AHV = {
+    SEC, MIN, HOUR, DAY, wall, fmt, fmtDate, fmtDuration, scale, actionGroup, ticks, radius, cluster, layout, zoom,
+    clampRange, bins, haystack, matches, lifetimes, searchPackages, sortBy,
+  };
   if (typeof module === 'object' && module.exports) module.exports = AHV;
   else root.AHV = AHV;
 })(this);

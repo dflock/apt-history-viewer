@@ -36,13 +36,42 @@
         <button type="button" id="zoom-reset">Reset zoom</button>
       </div>
     </div>
+    <div class="filters" id="filters" role="search" aria-label="Filter transactions">
+      <div class="fgroup" id="f-origins" role="group" aria-label="Origins"></div>
+      <div class="fgroup" id="f-groups" role="group" aria-label="Change types"></div>
+      <button type="button" class="toggle" id="f-problems" aria-pressed="false">Errors &amp; incomplete only</button>
+      <input type="search" id="f-text" placeholder="Filter by command, user or package" aria-label="Filter by command, user or package">
+      <span class="fcount" id="f-count" aria-live="polite"></span>
+      <button type="button" id="f-clear" hidden>Clear filters</button>
+    </div>
     <div class="legend" id="tl-legend"></div>
     <div class="timeline" id="timeline"></div>
-    <p class="hint">Scroll or pinch to zoom, drag to pan. Click a mark for details; click a cluster to zoom into it.</p>
+    <p class="hint">Scroll or pinch to zoom, drag to pan, Shift+drag (or drag on the overview) to zoom to a range. Click a mark for details; click a cluster to zoom into it.</p>
   </section>
 
   <section class="card detail" id="detail" aria-live="polite">
     <p class="empty">Select a transaction or cluster to see what changed.</p>
+  </section>
+
+  <section class="card" id="pkg-card" aria-labelledby="pkg-title">
+    <div class="card-head">
+      <h2 id="pkg-title">Package history</h2>
+      <button type="button" id="pkg-clear" hidden>Close package</button>
+    </div>
+    <div class="pkg-search">
+      <input type="search" id="pkg-q" placeholder="Find a package, e.g. firefox or libc6:i386" aria-label="Find a package" autocomplete="off">
+      <ul class="pkg-results" id="pkg-results"></ul>
+    </div>
+    <div id="pkg-info"></div>
+  </section>
+
+  <section class="card" aria-labelledby="tt-title">
+    <div class="card-head">
+      <h2 id="tt-title">Transactions in view</h2>
+      <span class="fcount" id="tt-count"></span>
+    </div>
+    <div class="table-wrap"><table class="txtable" id="tx-table"><thead></thead><tbody></tbody></table></div>
+    <button type="button" id="tt-more" hidden></button>
   </section>
 </main>
 
