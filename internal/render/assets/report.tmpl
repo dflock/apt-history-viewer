@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="apt-history-viewer {{.Version}}">
+<title>Package history: {{.Host}}</title>
+<style>{{.CSS}}</style>
+</head>
+<body>
+<noscript><p class="noscript">This report draws its timeline with JavaScript. Enable it to see the history.</p></noscript>
+
+<header class="top">
+  <h1>Package history <span class="host" id="host"></span></h1>
+  <p class="sub" id="coverage"></p>
+  <div class="totals" id="totals"></div>
+  <details class="warnings" id="warnings" hidden><summary></summary><ul></ul></details>
+</header>
+
+<main>
+  <section class="card" aria-labelledby="ov-title">
+    <div class="card-head">
+      <h2 id="ov-title">Changes per <span id="ov-unit">day</span></h2>
+      <div class="legend" id="ov-legend"></div>
+    </div>
+    <div class="overview" id="overview"></div>
+  </section>
+
+  <section class="card" aria-labelledby="tl-title">
+    <div class="card-head">
+      <h2 id="tl-title">Transactions</h2>
+      <div class="toolbar">
+        <span class="range" id="range" aria-live="polite"></span>
+        <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
+        <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+        <button type="button" id="zoom-reset">Reset zoom</button>
+      </div>
+    </div>
+    <div class="legend" id="tl-legend"></div>
+    <div class="timeline" id="timeline"></div>
+    <p class="hint">Scroll or pinch to zoom, drag to pan. Click a mark for details; click a cluster to zoom into it.</p>
+  </section>
+
+  <section class="card detail" id="detail" aria-live="polite">
+    <p class="empty">Select a transaction or cluster to see what changed.</p>
+  </section>
+</main>
+
+<footer id="footer"></footer>
+<div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+
+<script type="application/json" id="data">{{.Data}}</script>
+<script>{{.JS}}</script>
+</body>
+</html>

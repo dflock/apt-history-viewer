@@ -429,12 +429,35 @@ in the browser, and the JSON is small (this machine ≈ 650 transactions → a f
 
 Light and dark themes via `prefers-color-scheme`. Works at narrow widths (lanes stack).
 
+### 6.1 Details settled while building M3
+
+* **Files**: `internal/render/assets/`: `report.tmpl`, `app.css`, `core.js` (pure functions:
+  time, scales, ticks, clustering, zoom, overview bins) and `app.js` (DOM). All are inlined into
+  the one HTML file. `core.test.cjs` holds the `node --test` tests, and `go test` runs them
+  (plus `node --check` on the page script) when node is installed. They are skipped otherwise.
+* **Time display**: the page shows the logged machine's wall-clock time. JS reads the local part
+  of each RFC 3339 timestamp as if it were UTC and formats in UTC, so it doesn't depend on the
+  viewer's time zone or need a zone database. Across a DST fall-back, that hour's times can sort
+  out of order by up to an hour, which doesn't matter at timeline scale.
+* **Cluster width cap**: the greedy merge also stops when a cluster would grow wider than
+  64 px. Without the cap, daily unattended runs chain into one pill spanning months
+  (seen on real data), which hides how dense each part of it is.
+* **Overview**: bar height ∝ √changes, so ordinary weeks stay visible next to the occasional
+  release upgrade. The legend says so. Clicking the overview re-centres the timeline. Brushing
+  is M4.
+* **Transactions with no changes**: aptitude logs entries even when it changes nothing
+  (20 on this machine, probably mark-only changes). They are kept and shown as
+  "no package changes".
+* **Output**: default `./apt-history-<host>.html` (host sanitised to `[A-Za-z0-9._-]`), written
+  to a temporary file and renamed into place. With several `--input`, `-o` is a directory and
+  repeated hosts get `-2`, `-3`. Live machine: 1.07 MB of HTML.
+
 ## 7. CLI
 
 ```
 apt-history-viewer [flags]
-  -o, --output FILE       output path (default ./apt-history-<host>.html; "-" = stdout;
-                          with several --input, a directory)
+  -o, --output FILE       output path (default ./apt-history-<host>.html, or stdout for
+                          --json/--raw; "-" = stdout; with several --input, a directory)
   -i, --input PATH        input root: directory or .tar/.tar.gz/.tgz (default /; repeatable)
       --apt-dir DIR       override: apt log directory (default <input>/var/log/apt)
       --dpkg-log PATH     override: dpkg log (rotations found alongside)

@@ -181,8 +181,11 @@ func TestMultipleInputsGiveArray(t *testing.T) {
 }
 
 func TestExitCodes(t *testing.T) {
-	if _, _, code := runCLI(t, "-i", realRel); code != 2 {
-		t.Errorf("without --json: exit %d, want 2 (HTML not implemented yet)", code)
+	if _, _, code := runCLI(t, "--json", "--raw", "-i", realRel); code != 2 {
+		t.Errorf("--json --raw: exit %d, want 2", code)
+	}
+	if _, errOut, code := runCLI(t, "-o", "-", "-i", realRel, "-i", realRel); code != 2 || !strings.Contains(errOut, "single --input") {
+		t.Errorf("stdout with two inputs: exit %d, %s", code, errOut)
 	}
 	if _, errOut, code := runCLI(t, "--json", "-i", realRel, "-i", realRel, "--dpkg-status", "x"); code != 2 || !strings.Contains(errOut, "single --input") {
 		t.Errorf("override with two inputs: exit %d, %s", code, errOut)
@@ -219,5 +222,60 @@ func TestOverridesAndHost(t *testing.T) {
 	}
 	if r.AptHistory[0].File != filepath.Join(aptDir, "history.log") {
 		t.Errorf("override file name = %q", r.AptHistory[0].File)
+	}
+}
+
+func TestHTMLOutput(t *testing.T) {
+	real := testutil.Testdata(t, "real")
+	pk := testutil.Testdata(t, "synthetic", "root-packagekit")
+
+	// Default: ./apt-history-<host>.html in the working directory.
+	t.Chdir(t.TempDir())
+	_, errOut, code := runCLI(t, "-i", real)
+	if code != 0 || !strings.Contains(errOut, "wrote apt-history-testhost.html (10 transactions)") {
+		t.Fatalf("exit %d: %s", code, errOut)
+	}
+	b, err := os.ReadFile("apt-history-testhost.html")
+	if err != nil || !strings.HasPrefix(string(b), "<!doctype html>") || !strings.Contains(string(b), `"commandline":"apt install xdotool xvfb"`) {
+		t.Fatalf("report: %v, %d bytes", err, len(b))
+	}
+	if ents, _ := os.ReadDir("."); len(ents) != 1 {
+		t.Errorf("left temporary files behind: %v", ents)
+	}
+
+	// -o FILE, and -o - for stdout.
+	if _, errOut, code := runCLI(t, "-i", real, "-o", "custom.html"); code != 0 {
+		t.Fatalf("-o: exit %d: %s", code, errOut)
+	}
+	if _, err := os.Stat("custom.html"); err != nil {
+		t.Error(err)
+	}
+	if out, _, code := runCLI(t, "-i", real, "-o", "-"); code != 0 || !strings.HasPrefix(out, "<!doctype html>") {
+		t.Errorf("-o -: exit %d", code)
+	}
+
+	// Several inputs: one file each in the -o directory; same host twice gets -2.
+	_, errOut, code = runCLI(t, "-i", real, "-i", pk, "-i", real, "-o", "reports")
+	if code != 0 {
+		t.Fatalf("multi: exit %d: %s", code, errOut)
+	}
+	for _, f := range []string{"apt-history-testhost.html", "apt-history-pkhost.html", "apt-history-testhost-2.html"} {
+		if _, err := os.Stat(filepath.Join("reports", f)); err != nil {
+			t.Error(err)
+		}
+	}
+}
+
+func TestFileName(t *testing.T) {
+	for host, want := range map[string]string{
+		"testhost":     "apt-history-testhost",
+		"../../etc/x":  "apt-history-etc_x",
+		"my host/name": "apt-history-my_host_name",
+		"":             "apt-history-unknown",
+		"web-01.lan":   "apt-history-web-01.lan",
+	} {
+		if got := fileName(host); got != want {
+			t.Errorf("fileName(%q) = %q, want %q", host, got, want)
+		}
 	}
 }
