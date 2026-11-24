@@ -16,6 +16,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"regexp"
+	"runtime/debug"
 	"strings"
 	"time"
 	_ "time/tzdata" // logs from other machines may name zones this host lacks
@@ -28,6 +29,13 @@ import (
 )
 
 var version = "dev" // set with -ldflags "-X main.version=…"
+
+func init() {
+	// go install …@v0.1.0 doesn't set -ldflags, but records the module version.
+	if info, ok := debug.ReadBuildInfo(); ok && version == "dev" && info.Main.Version != "" && info.Main.Version != "(devel)" {
+		version = info.Main.Version
+	}
+}
 
 // now is the report's generation time; tests pin it.
 var now = time.Now
