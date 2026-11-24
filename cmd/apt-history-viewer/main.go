@@ -13,6 +13,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -42,6 +43,8 @@ type options struct {
 	json    bool
 	raw     bool
 	host    string
+	redact  bool
+	open    bool
 	ov      collect.Overrides
 	version bool
 }
@@ -61,6 +64,8 @@ Default: ./apt-history-<host>.html, or stdout for --json/--raw`)
 	fl.StringVar(&o.output, "o", "", "shorthand for --output")
 	fl.BoolVar(&o.json, "json", false, "write the report as JSON")
 	fl.BoolVar(&o.raw, "raw", false, "write the uncorrelated parse of every log as JSON (debugging)")
+	fl.BoolVar(&o.redact, "redact", false, "drop usernames, command-line arguments and private file paths, for sharing")
+	fl.BoolVar(&o.open, "open", false, "open the report with xdg-open when it's written")
 	fl.StringVar(&o.host, "host", "", "override the host name shown in the report")
 	fl.StringVar(&o.ov.AptDir, "apt-dir", "", "override: directory holding history.log*")
 	fl.StringVar(&o.ov.DpkgLog, "dpkg-log", "", "override: path of dpkg.log (rotations found alongside)")
@@ -82,6 +87,14 @@ Default: ./apt-history-<host>.html, or stdout for --json/--raw`)
 	}
 	if o.json && o.raw {
 		fmt.Fprintln(stderr, "--json and --raw can't be used together")
+		return 2
+	}
+	if o.redact && o.raw {
+		fmt.Fprintln(stderr, "--raw is the unredacted parse; it can't be used with --redact")
+		return 2
+	}
+	if o.open && (o.json || o.raw || o.output == "-") {
+		fmt.Fprintln(stderr, "--open only works when writing an HTML file")
 		return 2
 	}
 	if len(o.inputs) == 0 {
@@ -112,7 +125,14 @@ Default: ./apt-history-<host>.html, or stdout for --json/--raw`)
 		if o.raw {
 			results = append(results, res)
 		} else {
-			results = append(results, model.Build(res, now()))
+			r := model.Build(res, now())
+			if o.redact {
+				r.Redact()
+				if o.host == "" {
+					fmt.Fprintf(stderr, "note: the redacted report still names the host %q; use --host to change it\n", r.Host)
+				}
+			}
+			results = append(results, r)
 		}
 	}
 	if !anyData {
@@ -121,7 +141,15 @@ Default: ./apt-history-<host>.html, or stdout for --json/--raw`)
 	}
 
 	if !o.json && !o.raw {
-		return writeHTML(o.output, stdout, stderr, results)
+		paths, code := writeHTML(o.output, stdout, stderr, results)
+		if o.open {
+			for _, p := range paths {
+				if err := openFile(p); err != nil {
+					fmt.Fprintf(stderr, "warning: cannot open %s: %v\n", p, err)
+				}
+			}
+		}
+		return code
 	}
 	var payload any = results
 	if len(results) == 1 {
@@ -136,17 +164,18 @@ Default: ./apt-history-<host>.html, or stdout for --json/--raw`)
 
 // writeHTML writes one report per input: to out (or ./apt-history-<host>.html)
 // for a single input, or into the directory out (default ".") for several.
-func writeHTML(out string, stdout, stderr io.Writer, results []any) int {
+// It returns the files written and the exit code.
+func writeHTML(out string, stdout, stderr io.Writer, results []any) (paths []string, code int) {
 	if len(results) > 1 && out == "-" {
 		fmt.Fprintln(stderr, "--output - (stdout) only works with a single --input")
-		return 2
+		return nil, 2
 	}
 	dir := ""
 	if len(results) > 1 {
 		dir = cmp.Or(out, ".")
 		if err := os.MkdirAll(dir, 0o755); err != nil {
 			fmt.Fprintf(stderr, "error: %v\n", err)
-			return 1
+			return paths, 1
 		}
 	}
 	used := map[string]bool{}
@@ -155,7 +184,7 @@ func writeHTML(out string, stdout, stderr io.Writer, results []any) int {
 		if len(results) == 1 && out == "-" {
 			if err := render.Render(stdout, r, version); err != nil {
 				fmt.Fprintf(stderr, "error: %v\n", err)
-				return 1
+				return paths, 1
 			}
 			continue
 		}
@@ -165,11 +194,12 @@ func writeHTML(out string, stdout, stderr io.Writer, results []any) int {
 		}
 		if err := writeFile(path, func(w io.Writer) error { return render.Render(w, r, version) }); err != nil {
 			fmt.Fprintf(stderr, "error: %v\n", err)
-			return 1
+			return paths, 1
 		}
 		fmt.Fprintf(stderr, "wrote %s (%d transactions)\n", path, len(r.Transactions))
+		paths = append(paths, path)
 	}
-	return 0
+	return paths, 0
 }
 
 var unsafeChars = regexp.MustCompile(`[^A-Za-z0-9._-]+`)
@@ -225,4 +255,22 @@ func writeJSON(out string, stdout io.Writer, v any) error {
 	enc := json.NewEncoder(w)
 	enc.SetIndent("", "  ")
 	return enc.Encode(v)
+}
+
+// openFile opens a written report in the desktop's browser. It doesn't wait:
+// xdg-open may block until the browser exits. Tests replace it.
+var openFile = func(path string) error {
+	opener, err := exec.LookPath("xdg-open")
+	if err != nil {
+		return errors.New("xdg-open not found; open the file in a browser")
+	}
+	abs, err := filepath.Abs(path)
+	if err != nil {
+		return err
+	}
+	cmd := exec.Command(opener, abs)
+	if err := cmd.Start(); err != nil {
+		return err
+	}
+	return cmd.Process.Release()
 }

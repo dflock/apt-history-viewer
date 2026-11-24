@@ -279,3 +279,61 @@ func TestFileName(t *testing.T) {
 		}
 	}
 }
+
+func TestRedact(t *testing.T) {
+	out, errOut, code := runCLI(t, "--json", "--redact", "-i", realRel)
+	if code != 0 {
+		t.Fatalf("exit %d: %s", code, errOut)
+	}
+	var r model.Report
+	if err := json.Unmarshal([]byte(out), &r); err != nil {
+		t.Fatal(err)
+	}
+	if !r.Redacted {
+		t.Error("report not marked redacted")
+	}
+	if strings.Contains(out, "testuser") || strings.Contains(out, `"uid"`) || strings.Contains(out, "xdotool xvfb") {
+		t.Error("redacted report still holds users or arguments")
+	}
+	if r.Input != "real" || !strings.HasPrefix(r.Files[0], "real/var/log/") {
+		t.Errorf("paths not shortened: %q %q", r.Input, r.Files[0])
+	}
+
+	// The HTML carries the same, redacted, report.
+	html := filepath.Join(t.TempDir(), "r.html")
+	if _, errOut, code := runCLI(t, "--redact", "-o", html, "-i", realRel); code != 0 {
+		t.Fatalf("exit %d: %s", code, errOut)
+	}
+	b, err := os.ReadFile(html)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if strings.Contains(string(b), "testuser") || !strings.Contains(string(b), `"redacted":true`) {
+		t.Error("HTML not redacted")
+	}
+}
+
+func TestOpen(t *testing.T) {
+	var opened []string
+	defer func(f func(string) error) { openFile = f }(openFile)
+	openFile = func(p string) error { opened = append(opened, p); return nil }
+
+	dir := t.TempDir()
+	if _, errOut, code := runCLI(t, "--open", "-o", dir, "-i", realRel, "-i", realRel); code != 0 {
+		t.Fatalf("exit %d: %s", code, errOut)
+	}
+	want := []string{filepath.Join(dir, "apt-history-testhost.html"), filepath.Join(dir, "apt-history-testhost-2.html")}
+	if !reflect.DeepEqual(opened, want) {
+		t.Errorf("opened %q, want %q", opened, want)
+	}
+
+	opened = nil
+	for _, args := range [][]string{{"--open", "--json"}, {"--open", "-o", "-"}, {"--redact", "--raw"}} {
+		if _, _, code := runCLI(t, append(args, "-i", realRel)...); code != 2 {
+			t.Errorf("%v: exit %d, want 2", args, code)
+		}
+	}
+	if len(opened) != 0 {
+		t.Errorf("opened %q on a usage error", opened)
+	}
+}

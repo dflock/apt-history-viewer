@@ -471,6 +471,27 @@ Light and dark themes via `prefers-color-scheme`. Works at narrow widths (lanes 
   time with "Show more", and redrawn 150 ms after zooming stops rather than on every frame.
 * **Dark mode** shipped in M3 (`prefers-color-scheme`).
 
+### 6.3 M5 implementation notes
+
+* **`--redact`** (`model.Report.Redact`) runs after correlation, so origins are still decided
+  from the real `Requested-By` and command lines. It drops `User` and `UID`, and cuts each
+  command line to the program and its subcommand (`apt install …`,
+  `/usr/bin/python3 /usr/bin/unattended-upgrade -d` → `unattended-upgrade …`). Paths inside
+  the input keep their part below it behind the input's base name
+  (`/home/alice/box.tgz:var/log/dpkg.log` → `box.tgz:var/log/dpkg.log`). Paths under
+  `/var/log`, `/var/lib`, `/etc`, `/usr`, `/bin`, `/sbin` and `/lib` are kept. Any other path
+  is cut to its base name, including paths inside error and warning text. Quoted log text in
+  warnings becomes `"…"`, because a bad line may be a `Requested-By` line. Package names,
+  versions and the host are kept. Since a host name often names its owner, stderr suggests
+  `--host` when it isn't given. The report sets `redacted: true` and the page says so.
+  `--raw` is refused with `--redact`.
+* **`--open`** starts `xdg-open` on each HTML file written, without waiting for it (it can
+  block until the browser exits). It is a usage error with `--json`, `--raw` or `-o -`. A
+  missing `xdg-open` is a warning, not a failure.
+* **Builds:** `make build | test | check | release`. `release` builds static
+  `dist/apt-history-viewer-<version>-linux-{amd64,arm64}` (version from `git describe`) and
+  `SHA256SUMS`. `check` also fuzzes each parser and `Build` for 10 s.
+
 ## 7. CLI
 
 ```
@@ -484,8 +505,8 @@ apt-history-viewer [flags]
       --since DATE        --until DATE   restrict window
       --json              write the Report as JSON instead of HTML (debugging, tests)
       --raw               write the uncorrelated parse of every log as JSON (debugging)
-      --redact            drop usernames and command-line arguments
-      --open              open the result with xdg-open
+      --redact            drop usernames, command-line arguments and private paths (§6.3)
+      --open              open the result with xdg-open (HTML files only)
       --host NAME         override the host name shown in the report
       --etckeeper MODE    (M7) auto | off (default auto: use it if readable/present)
       --etckeeper-log PATH (M7) pre-exported `git log` output (see §3.6)
@@ -523,7 +544,7 @@ CGO_ENABLED=0 go build -trimpath -ldflags="-s -w -X main.version=$VERSION" ./cmd
 ```
 
 This gives a fully static ELF (check with `file` / `ldd`). Cross-compile with
-`GOARCH=arm64` etc. A `Makefile` (or `justfile`) handles build / test / release.
+`GOARCH=arm64` etc. The `Makefile` handles build / test / release (§6.3).
 
 ## 10. Testing
 

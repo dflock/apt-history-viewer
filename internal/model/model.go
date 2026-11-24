@@ -105,7 +105,8 @@ type Report struct {
 	// told apart from apt runs whose history.log entry has rotated away.
 	AptFrom      time.Time      `json:"aptFrom,omitzero"`
 	DpkgFrom     time.Time      `json:"dpkgFrom,omitzero"`
-	HasBaseline  bool           `json:"hasBaseline"` // dpkg/status was read, so Package.Installed/PreHistory mean something
+	Redacted     bool           `json:"redacted,omitempty"` // --redact: no users, arguments or private paths
+	HasBaseline  bool           `json:"hasBaseline"`        // dpkg/status was read, so Package.Installed/PreHistory mean something
 	Transactions []Transaction  `json:"transactions"`
 	Packages     []Package      `json:"packages"`
 	Files        []string       `json:"files"`
