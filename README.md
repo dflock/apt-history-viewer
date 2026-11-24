@@ -8,6 +8,8 @@ happened automatically (unattended-upgrades, scripts run as root, bare dpkg).
 It is a single static binary with no runtime dependencies. The report is a single HTML
 file with nothing to fetch, so it can be opened offline, mailed or attached to a ticket.
 
+![A report: weekly changes over a year, the timeline with one lane per origin, and one apt install opened in the detail panel](docs/screenshot.png)
+
 ## What the report shows
 
 * **Overview:** changes per day, week or month, split into installs, upgrades and removals.

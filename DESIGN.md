@@ -502,7 +502,7 @@ apt-history-viewer [flags]
       --apt-dir DIR       override: apt log directory (default <input>/var/log/apt)
       --dpkg-log PATH     override: dpkg log (rotations found alongside)
       --dpkg-status PATH  override: dpkg status file
-      --since DATE        --until DATE   restrict window
+      --since DATE        --until DATE   (M8) restrict window
       --json              write the Report as JSON instead of HTML (debugging, tests)
       --raw               write the uncorrelated parse of every log as JSON (debugging)
       --redact            drop usernames, command-line arguments and private paths (§6.3)
@@ -584,6 +584,10 @@ expected result. `testdata/real/` is also a ready-made `--input` root.
 6. **Later**: pre-rendered static `<svg>` overview in the HTML for no-JS viewing and printing.
 7. **Later**: etckeeper history (§3.6): parser, local `git log` and pre-exported log input,
    matching and extension, `/etc` files in the detail panel, shaded etckeeper-only period.
+8. **Later**: `--since DATE` / `--until DATE` to restrict the report to a time window.
+   Not built yet. To decide when it is: the date format (`YYYY-MM-DD`, plus full
+   timestamps?), whether dates are read in the source machine's zone, and whether
+   transactions that cross the edges and the packages' "present before" state are kept.
 
 ## 12. Decisions on former open questions (2026-11-24)
 
