@@ -1,0 +1,17 @@
+Aptitude 0.8.13: log report
+Mon, Feb  9 2026 18:00:00 +0000
+
+  IMPORTANT: this log only lists intended actions; actions which fail
+  due to dpkg problems may not be completed.
+
+Will install 3 packages, and remove 1 packages.
+1024 kB of disk space will be used
+========================================
+[INSTALL] newpkg:amd64 1.0-1
+[INSTALL, DEPENDENCIES] libnew1:amd64 1.0-1
+[UPGRADE] alpha:amd64 1.0-1 -> 1.0-2
+[REMOVE] oldthing:amd64 0.9
+[HOLD] pinned:amd64 5.0-1
+========================================
+
+Log complete.

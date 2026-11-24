@@ -1,0 +1,9 @@
+2026-02-09 17:00:00 startup packages purge
+2026-02-09 17:00:00 remove oldconf:all 2:0.1-1 <none>
+2026-02-09 17:00:00 status half-configured oldconf:all 2:0.1-1
+2026-02-09 17:00:00 status half-installed oldconf:all 2:0.1-1
+2026-02-09 17:00:00 status config-files oldconf:all 2:0.1-1
+2026-02-09 17:00:00 purge oldconf:all 2:0.1-1 <none>
+2026-02-09 17:00:00 status config-files oldconf:all 2:0.1-1
+2026-02-09 17:00:00 status not-installed oldconf:all <none>
+2026-02-09 17:00:01 conffile /etc/oldconf.conf keep

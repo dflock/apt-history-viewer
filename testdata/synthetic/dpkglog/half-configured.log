@@ -1,0 +1,10 @@
+2026-02-08 16:00:00 startup archives unpack
+2026-02-08 16:00:00 upgrade broken-pkg:amd64 1.0-1 1.0-2
+2026-02-08 16:00:00 status half-configured broken-pkg:amd64 1.0-1
+2026-02-08 16:00:00 status unpacked broken-pkg:amd64 1.0-1
+2026-02-08 16:00:01 status half-installed broken-pkg:amd64 1.0-1
+2026-02-08 16:00:01 status unpacked broken-pkg:amd64 1.0-2
+2026-02-08 16:00:01 startup packages configure
+2026-02-08 16:00:01 configure broken-pkg:amd64 1.0-2 <none>
+2026-02-08 16:00:01 status unpacked broken-pkg:amd64 1.0-2
+2026-02-08 16:00:02 status half-configured broken-pkg:amd64 1.0-2

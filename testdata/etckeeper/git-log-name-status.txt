@@ -1,0 +1,193 @@
+commit e01290cf7819339e71af44ade93809bfd5d7b778
+Author: Test User <user@example.com>
+Date:   Fri Nov 13 12:00:07 2026 +0000
+
+    committing changes in /etc made by "aptitude --full-resolver -q safe-upgrade"
+    
+    Package changes:
+    -containerd.io 2.4.2-3~ubuntu.24.04~noble amd64
+    +containerd.io 2.4.2-4~ubuntu.24.04~noble amd64
+    -distro-info 1.7build1 amd64
+    +distro-info 1.7ubuntu0.1 amd64
+    -docker-buildx-plugin 0.38.1-1~ubuntu.24.04~noble amd64
+    +docker-buildx-plugin 0.39.0-1~ubuntu.24.04~noble amd64
+    -docker-compose-plugin 5.7.0-1~ubuntu.24.04~noble amd64
+    +docker-compose-plugin 5.7.1-1~ubuntu.24.04~noble amd64
+    -fonts-opensymbol 4:102.12+LibO26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    +fonts-opensymbol 4:102.12+LibO26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    -libc-bin 2.39-0ubuntu8.9 amd64
+    -libc-dev-bin 2.39-0ubuntu8.9 amd64
+    -libc-devtools 2.39-0ubuntu8.9 amd64
+    -libc6 2.39-0ubuntu8.9 amd64
+    -libc6 2.39-0ubuntu8.9 i386
+    -libc6-dbg 2.39-0ubuntu8.9 amd64
+    -libc6-dev 2.39-0ubuntu8.9 amd64
+    -libc6-i386 2.39-0ubuntu8.9 amd64
+    +libc-bin 2.39-0ubuntu8.12 amd64
+    +libc-dev-bin 2.39-0ubuntu8.12 amd64
+    +libc-devtools 2.39-0ubuntu8.12 amd64
+    +libc6 2.39-0ubuntu8.12 amd64
+    +libc6 2.39-0ubuntu8.12 i386
+    +libc6-dbg 2.39-0ubuntu8.12 amd64
+    +libc6-dev 2.39-0ubuntu8.12 amd64
+    +libc6-i386 2.39-0ubuntu8.12 amd64
+    +libdistro-info-perl 1.7ubuntu0.1 all
+    -libpq5 18.6-1.pgdg24.04+2 amd64
+    +libpq5 18.7-1.pgdg24.04+2 amd64
+    -libreoffice-base-core 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    -libreoffice-calc 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    -libreoffice-common 4:26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    -libreoffice-core 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    -libreoffice-draw 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    -libreoffice-gnome 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    -libreoffice-gtk3 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    -libreoffice-help-common 4:26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    -libreoffice-help-en-us 4:26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    -libreoffice-impress 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    -libreoffice-math 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    -libreoffice-style-colibre 4:26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    -libreoffice-style-elementary 4:26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    -libreoffice-style-yaru 4:26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    -libreoffice-uiconfig-calc 4:26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    -libreoffice-uiconfig-common 4:26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    -libreoffice-uiconfig-draw 4:26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    -libreoffice-uiconfig-impress 4:26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    -libreoffice-uiconfig-math 4:26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    -libreoffice-uiconfig-writer 4:26.2.6.3-0ubuntu0.24.04.1~lo1 all
+    -libreoffice-writer 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    +libreoffice-base-core 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    +libreoffice-calc 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    +libreoffice-common 4:26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    +libreoffice-core 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    +libreoffice-draw 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    +libreoffice-gnome 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    +libreoffice-gtk3 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    +libreoffice-help-common 4:26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    +libreoffice-help-en-us 4:26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    +libreoffice-impress 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    +libreoffice-math 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    +libreoffice-style-colibre 4:26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    +libreoffice-style-elementary 4:26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    +libreoffice-style-yaru 4:26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    +libreoffice-uiconfig-calc 4:26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    +libreoffice-uiconfig-common 4:26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    +libreoffice-uiconfig-draw 4:26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    +libreoffice-uiconfig-impress 4:26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    +libreoffice-uiconfig-math 4:26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    +libreoffice-uiconfig-writer 4:26.8.2.2-0ubuntu0.24.04.1~lo2 all
+    +libreoffice-writer 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    -librewolf 159.0.1-1 amd64
+    +librewolf 160.0-1 amd64
+    -libuno-cppu3t64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    -libuno-cppuhelpergcc3-3t64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    -libuno-purpenvhelpergcc3-3t64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    -libuno-sal3t64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    -libuno-salhelpergcc3-3t64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    +libuno-cppu3t64 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    +libuno-cppuhelpergcc3-3t64 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    +libuno-purpenvhelpergcc3-3t64 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    +libuno-sal3t64 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    +libuno-salhelpergcc3-3t64 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    -lintian 2.117.0ubuntu1.5 all
+    +lintian 2.117.0ubuntu1.6 all
+    -linux-firmware-amd-graphics 20240318.git3b128b60-0ubuntu3.4 all
+    +linux-firmware-amd-graphics 20240318.git3b128b60-0ubuntu3.5 all
+    -locales 2.39-0ubuntu8.9 all
+    +locales 2.39-0ubuntu8.12 all
+    -postgresql-14 14.24-1.pgdg24.04+2 amd64
+    -postgresql-client-14 14.24-1.pgdg24.04+2 amd64
+    -postgresql-client-common 293.pgdg24.04+1 all
+    -postgresql-common 293.pgdg24.04+1 all
+    +postgresql-14 14.25-1.pgdg24.04+1 amd64
+    +postgresql-client-14 14.25-1.pgdg24.04+1 amd64
+    +postgresql-client-common 294.pgdg24.04+2 all
+    +postgresql-common 294.pgdg24.04+2 all
+    -python3-distro-info 1.7build1 all
+    +python3-distro-info 1.7ubuntu0.1 all
+    -python3-pil 10.2.0-1ubuntu1.4 amd64
+    -python3-pil.imagetk 10.2.0-1ubuntu1.4 amd64
+    +python3-pil 10.2.0-1ubuntu1.5 amd64
+    +python3-pil.imagetk 10.2.0-1ubuntu1.5 amd64
+    -python3-uno 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    +python3-uno 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    -snapd 2.77.1+ubuntu24.04 amd64
+    +snapd 2.78+ubuntu24.04 amd64
+    -uno-libs-private 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    +uno-libs-private 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    -ure 4:26.2.6.3-0ubuntu0.24.04.1~lo1 amd64
+    +ure 4:26.8.2.2-0ubuntu0.24.04.1~lo2 amd64
+    -vivaldi-stable 8.3.4191.30-1 amd64
+    +vivaldi-stable 8.3.4191.44-1 amd64
+
+M	libreoffice/registry/main.xcd
+M	udev/rules.d/70-snap.snapd.rules
+
+commit 4a4948a481bf8a958ae5e63becb8b16f5c0f0275
+Author: Test User <user@example.com>
+Date:   Fri Nov 13 11:58:30 2026 +0000
+
+    saving uncommitted changes in /etc prior to apt run
+
+M	.etckeeper
+D	apt/sources.list.d/spotify.list
+
+commit 840c3547de11f6a2f06ee58d043459f7910ea11d
+Author: Test User <user@example.com>
+Date:   Thu Nov 12 11:34:57 2026 +0000
+
+    daily autocommit
+
+M	.etckeeper
+D	systemd/system/multi-user.target.wants/snap-core22-2437.mount
+A	systemd/system/multi-user.target.wants/snap-core22-3129.mount
+R064	systemd/system/snap-core22-2437.mount	systemd/system/snap-core22-3129.mount
+D	systemd/system/snapd.mounts.target.wants/snap-core22-2437.mount
+A	systemd/system/snapd.mounts.target.wants/snap-core22-3129.mount
+
+commit 7748a3b2b1f0cec33b41e8f78b9838e798482845
+Author: Test User <user@example.com>
+Date:   Thu Nov 12 06:21:30 2026 +0000
+
+    committing changes in /etc made by "/usr/bin/python3 /usr/bin/unattended-upgrade"
+    
+    Packages with configuration changes:
+    -libsane-hpaio 3.23.12+dfsg0-0ubuntu5.1 amd64
+    +libsane-hpaio 3.23.12+dfsg0-0ubuntu5.3 amd64
+    
+    Package changes:
+    -hplip 3.23.12+dfsg0-0ubuntu5.1 amd64
+    -hplip-data 3.23.12+dfsg0-0ubuntu5.1 all
+    +hplip 3.23.12+dfsg0-0ubuntu5.3 amd64
+    +hplip-data 3.23.12+dfsg0-0ubuntu5.3 all
+    -libhpmud0 3.23.12+dfsg0-0ubuntu5.1 amd64
+    +libhpmud0 3.23.12+dfsg0-0ubuntu5.3 amd64
+    -libsane-hpaio 3.23.12+dfsg0-0ubuntu5.1 amd64
+    +libsane-hpaio 3.23.12+dfsg0-0ubuntu5.3 amd64
+    -printer-driver-hpcups 3.23.12+dfsg0-0ubuntu5.1 amd64
+    +printer-driver-hpcups 3.23.12+dfsg0-0ubuntu5.3 amd64
+    -printer-driver-postscript-hp 3.23.12+dfsg0-0ubuntu5.1 amd64
+    +printer-driver-postscript-hp 3.23.12+dfsg0-0ubuntu5.3 amd64
+
+M	hp/hplip.conf
+
+commit b0f691ff07a23e3b256d4b7fde48b128d1fa2197
+Author: Test User <user@example.com>
+Date:   Thu Nov 12 06:21:19 2026 +0000
+
+    saving uncommitted changes in /etc prior to apt run
+
+M	cups/printers.conf
+M	cups/printers.conf.O
+
+commit af68f9b33798ec7b02b369f31a0abd23281226e0
+Author: Test User <user@example.com>
+Date:   Tue Nov 10 06:27:40 2026 +0000
+
+    saving uncommitted changes in /etc prior to apt run
+
+M	.etckeeper
+D	systemd/system/multi-user.target.wants/snap-core24-1643.mount
+A	systemd/system/multi-user.target.wants/snap-core24-2307.mount
+R064	systemd/system/snap-core24-1643.mount	systemd/system/snap-core24-2307.mount
+D	systemd/system/snapd.mounts.target.wants/snap-core24-1643.mount
+A	systemd/system/snapd.mounts.target.wants/snap-core24-2307.mount

@@ -1,0 +1,6 @@
+
+Start-Date: 2026-02-01  10:00:00
+Commandline: apt install pkg-newest
+Requested-By: testuser (1000)
+Install: pkg-newest:amd64 (1.0-1)
+End-Date: 2026-02-01  10:00:01

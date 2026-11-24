@@ -1,0 +1,31 @@
+Package: coreutils
+Architecture: amd64
+Auto-Installed: 1
+
+Package: bash
+Architecture: amd64
+Auto-Installed: 1
+
+Package: lintian
+Architecture: amd64
+Auto-Installed: 1
+
+Package: fonts-opensymbol
+Architecture: amd64
+Auto-Installed: 1
+
+Package: hplip
+Architecture: amd64
+Auto-Installed: 1
+
+Package: python3-tornado
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libxdo3
+Architecture: amd64
+Auto-Installed: 1
+
+Package: libdistro-info-perl
+Architecture: amd64
+Auto-Installed: 1

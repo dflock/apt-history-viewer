@@ -1,0 +1,9 @@
+
+Start-Date: 2026-02-06  14:00:00
+Commandline: apt install g++-13 libstdc++6 python3.12
+Requested-By: testuser (1000)
+Install: g++-13:amd64 (13.3.0-6ubuntu2~24.04), libstdc++6:i386 (14.2.0-4ubuntu2~24.04, automatic), python3.12:amd64 (3.12.3-1ubuntu0.8), lib.dotted+name:amd64 (1:2.3~rc1+dfsg-0.1~bpo12+1, automatic)
+Upgrade: libstdc++6:amd64 (14.2.0-4ubuntu2~24.04, 14.2.0-4ubuntu2~24.04.1)
+Remove: oldthing:amd64 (0.9)
+Purge: oldconf:all (2:0.1-1)
+End-Date: 2026-02-06  14:00:09

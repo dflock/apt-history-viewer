@@ -1,0 +1,6 @@
+
+Start-Date: 2026-01-03  10:00:00
+Commandline: apt install pkg-c
+Requested-By: testuser (1000)
+Install: pkg-c:amd64 (1.0-1)
+End-Date: 2026-01-03  10:00:01

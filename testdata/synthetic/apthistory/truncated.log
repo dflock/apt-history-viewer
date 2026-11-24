@@ -1,0 +1,10 @@
+
+Start-Date: 2026-02-04  07:00:00
+Commandline: apt install gamma
+Requested-By: testuser (1000)
+End-Date: 2026-02-04  07:00:01
+
+Start-Date: 2026-02-04  07:30:00
+Commandline: apt install delta
+Requested-By: testuser (1000)
+Install: delta:amd64 (2.0-1), libdel

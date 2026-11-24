@@ -1,0 +1,6 @@
+
+Start-Date: 2025-11-01  10:00:00
+Commandline: apt install pkg-oldest
+Requested-By: testuser (1000)
+Install: pkg-oldest:amd64 (1.0-1)
+End-Date: 2025-11-01  10:00:01

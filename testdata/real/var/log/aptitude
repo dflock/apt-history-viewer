@@ -1,0 +1,71 @@
+Aptitude 0.8.13: log report
+Fri, Nov 13 2026 11:58:29 +0000
+
+  IMPORTANT: this log only lists intended actions; actions which fail
+  due to dpkg problems may not be completed.
+
+Will install 57 packages, and remove 0 packages.
+23.7 MB of disk space will be used
+========================================
+[INSTALL, DEPENDENCIES] libdistro-info-perl:amd64 1.7ubuntu0.1
+[UPGRADE] containerd.io:amd64 2.4.2-3~ubuntu.24.04~noble -> 2.4.2-4~ubuntu.24.04~noble
+[UPGRADE] distro-info:amd64 1.7build1 -> 1.7ubuntu0.1
+[UPGRADE] docker-buildx-plugin:amd64 0.38.1-1~ubuntu.24.04~noble -> 0.39.0-1~ubuntu.24.04~noble
+[UPGRADE] docker-compose-plugin:amd64 5.7.0-1~ubuntu.24.04~noble -> 5.7.1-1~ubuntu.24.04~noble
+[UPGRADE] fonts-opensymbol:amd64 4:102.12+LibO26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:102.12+LibO26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libc-bin:amd64 2.39-0ubuntu8.9 -> 2.39-0ubuntu8.12
+[UPGRADE] libc-dev-bin:amd64 2.39-0ubuntu8.9 -> 2.39-0ubuntu8.12
+[UPGRADE] libc-devtools:amd64 2.39-0ubuntu8.9 -> 2.39-0ubuntu8.12
+[UPGRADE] libc6:amd64 2.39-0ubuntu8.9 -> 2.39-0ubuntu8.12
+[UPGRADE] libc6:i386 2.39-0ubuntu8.9 -> 2.39-0ubuntu8.12
+[UPGRADE] libc6-dbg:amd64 2.39-0ubuntu8.9 -> 2.39-0ubuntu8.12
+[UPGRADE] libc6-dev:amd64 2.39-0ubuntu8.9 -> 2.39-0ubuntu8.12
+[UPGRADE] libc6-i386:amd64 2.39-0ubuntu8.9 -> 2.39-0ubuntu8.12
+[UPGRADE] libpq5:amd64 18.6-1.pgdg24.04+2 -> 18.7-1.pgdg24.04+2
+[UPGRADE] libreoffice-base-core:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-calc:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-common:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-core:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-draw:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-gnome:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-gtk3:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-help-common:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-help-en-us:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-impress:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-math:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-style-colibre:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-style-elementary:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-style-yaru:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-uiconfig-calc:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-uiconfig-common:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-uiconfig-draw:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-uiconfig-impress:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-uiconfig-math:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-uiconfig-writer:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libreoffice-writer:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] librewolf:amd64 159.0.1-1 -> 160.0-1
+[UPGRADE] libuno-cppu3t64:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libuno-cppuhelpergcc3-3t64:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libuno-purpenvhelpergcc3-3t64:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libuno-sal3t64:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] libuno-salhelpergcc3-3t64:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] lintian:amd64 2.117.0ubuntu1.5 -> 2.117.0ubuntu1.6
+[UPGRADE] linux-firmware-amd-graphics:amd64 20240318.git3b128b60-0ubuntu3.4 -> 20240318.git3b128b60-0ubuntu3.5
+[UPGRADE] locales:amd64 2.39-0ubuntu8.9 -> 2.39-0ubuntu8.12
+[UPGRADE] postgresql-14:amd64 14.24-1.pgdg24.04+2 -> 14.25-1.pgdg24.04+1
+[UPGRADE] postgresql-client-14:amd64 14.24-1.pgdg24.04+2 -> 14.25-1.pgdg24.04+1
+[UPGRADE] postgresql-client-common:amd64 293.pgdg24.04+1 -> 294.pgdg24.04+2
+[UPGRADE] postgresql-common:amd64 293.pgdg24.04+1 -> 294.pgdg24.04+2
+[UPGRADE] python3-distro-info:amd64 1.7build1 -> 1.7ubuntu0.1
+[UPGRADE] python3-pil:amd64 10.2.0-1ubuntu1.4 -> 10.2.0-1ubuntu1.5
+[UPGRADE] python3-pil.imagetk:amd64 10.2.0-1ubuntu1.4 -> 10.2.0-1ubuntu1.5
+[UPGRADE] python3-uno:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] snapd:amd64 2.77.1+ubuntu24.04 -> 2.78+ubuntu24.04
+[UPGRADE] uno-libs-private:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] ure:amd64 4:26.2.6.3-0ubuntu0.24.04.1~lo1 -> 4:26.8.2.2-0ubuntu0.24.04.1~lo2
+[UPGRADE] vivaldi-stable:amd64 8.3.4191.30-1 -> 8.3.4191.44-1
+========================================
+
+Log complete.
+
+===============================================================================

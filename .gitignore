@@ -1,0 +1,7 @@
+# build output
+/apt-history-viewer
+/dist/
+# generated reports
+/*.html
+# scratch logs in the repo root (fixtures live in testdata/)
+/*.log

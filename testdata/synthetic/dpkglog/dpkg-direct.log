@@ -1,0 +1,9 @@
+2026-02-07 15:00:00 startup archives unpack
+2026-02-07 15:00:00 install localtool:amd64 <none> 0.4.2
+2026-02-07 15:00:00 status half-installed localtool:amd64 0.4.2
+2026-02-07 15:00:01 status unpacked localtool:amd64 0.4.2
+2026-02-07 15:00:01 startup packages configure
+2026-02-07 15:00:01 configure localtool:amd64 0.4.2 <none>
+2026-02-07 15:00:01 status unpacked localtool:amd64 0.4.2
+2026-02-07 15:00:01 status half-configured localtool:amd64 0.4.2
+2026-02-07 15:00:01 status installed localtool:amd64 0.4.2

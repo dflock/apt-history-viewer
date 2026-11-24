@@ -1,0 +1,21 @@
+commit 1111111111111111111111111111111111111111
+Author: Test User <user@example.com>
+Date:   Tue Jul 14 10:00:05 2026 +0100
+
+    committing changes in /etc after apt run
+    
+    Package changes:
+    +newpkg 1.0-1 amd64
+
+commit 2222222222222222222222222222222222222222
+Author: Test User <user@example.com>
+Date:   Tue Jul 14 09:00:05 2026 +0100
+
+    committing changes in /etc made by "apt install something"
+
+commit 3333333333333333333333333333333333333333 (HEAD -> master, tag: before-upgrade)
+Merge: aaaaaaa bbbbbbb
+Author: Test User <user@example.com>
+Date:   Mon Jul 13 08:00:00 2026 +0100
+
+    Initial commit

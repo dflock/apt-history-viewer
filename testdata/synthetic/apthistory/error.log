@@ -1,0 +1,7 @@
+
+Start-Date: 2026-02-01  10:00:00
+Commandline: apt install broken-pkg
+Requested-By: testuser (1000)
+Install: broken-pkg:amd64 (1.0-1), libbroken0:amd64 (1.0-1, automatic)
+Error: Sub-process /usr/bin/dpkg returned an error code (1)
+End-Date: 2026-02-01  10:00:05

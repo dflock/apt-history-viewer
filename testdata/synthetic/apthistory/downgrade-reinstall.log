@@ -1,0 +1,12 @@
+
+Start-Date: 2026-02-02  09:00:00
+Commandline: apt install foo=1.9-1
+Requested-By: testuser (1000)
+Downgrade: foo:amd64 (2.0-1, 1.9-1), libfoo1:amd64 (2.0-1, 1.9-1)
+End-Date: 2026-02-02  09:00:03
+
+Start-Date: 2026-02-02  09:05:00
+Commandline: apt reinstall bar
+Requested-By: testuser (1000)
+Reinstall: bar:all (3.1-2)
+End-Date: 2026-02-02  09:05:01

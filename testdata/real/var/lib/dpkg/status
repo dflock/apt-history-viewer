@@ -1,0 +1,393 @@
+Package: bash
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: shells
+Installed-Size: 1900
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Multi-Arch: foreign
+Version: 5.2.21-2ubuntu4
+Depends: base-files (>= 2.1.12), debianutils (>= 5.6-0.1)
+Pre-Depends: libc6 (>= 2.38), libtinfo6 (>= 6)
+Recommends: bash-completion
+Suggests: bash-doc
+Conffiles:
+ /etc/bash.bashrc 3aa8b92d1dd6ddf4daaedc019662f1dc
+ /etc/skel/.bash_logout 22bfb8c1dd94b5f3813a2b25da67463f
+ /etc/skel/.bashrc 1f98b8f3f3c8f8927eca945d59dcc1c6
+ /etc/skel/.profile f4e81ade7d6f9fb342541152d08e7a97
+Description: GNU Bourne Again SHell
+ Bash is an sh-compatible command language interpreter that executes
+ commands read from the standard input or from a file.  Bash also
+ incorporates useful features from the Korn and C shells (ksh and csh).
+ .
+ Bash is ultimately intended to be a conformant implementation of the
+ IEEE POSIX Shell and Tools specification (IEEE Working Group 1003.2).
+ .
+ The Programmable Completion Code, by Ian Macdonald, is now found in
+ the bash-completion package.
+Homepage: http://tiswww.case.edu/php/chet/bash/bashtop.html
+Original-Maintainer: Matthias Klose <doko@debian.org>
+
+Package: coreutils
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: utils
+Installed-Size: 6944
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Multi-Arch: foreign
+Version: 9.4-3ubuntu6.3
+Pre-Depends: libacl1 (>= 2.2.23), libattr1 (>= 1:2.4.48), libc6 (>= 2.38), libgmp10 (>= 2:6.3.0+dfsg), libselinux1 (>= 3.1~), libssl3t64 (>= 3.0.0)
+Breaks: usrmerge (<< 39)
+Description: GNU core utilities
+ This package contains the basic file, shell and text manipulation
+ utilities which are expected to exist on every operating system.
+ .
+ Specifically, this package includes:
+ arch base64 basename cat chcon chgrp chmod chown chroot cksum comm cp
+ csplit cut date dd df dir dircolors dirname du echo env expand expr
+ factor false flock fmt fold groups head hostid id install join link ln
+ logname ls md5sum mkdir mkfifo mknod mktemp mv nice nl nohup nproc numfmt
+ od paste pathchk pinky pr printenv printf ptx pwd readlink realpath rm
+ rmdir runcon sha*sum seq shred sleep sort split stat stty sum sync tac
+ tail tee test timeout touch tr true truncate tsort tty uname unexpand
+ uniq unlink users vdir wc who whoami yes
+Homepage: http://gnu.org/software/coreutils
+Original-Maintainer: Michael Stone <mstone@debian.org>
+
+Package: fonts-opensymbol
+Status: install ok installed
+Priority: optional
+Section: fonts
+Installed-Size: 298
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Bugs: mailto:libreoffice@lists.launchpad.net
+Architecture: all
+Multi-Arch: foreign
+Source: libreoffice (4:26.8.2.2-0ubuntu0.24.04.1~lo2)
+Version: 4:102.12+LibO26.8.2.2-0ubuntu0.24.04.1~lo2
+Replaces: ttf-opensymbol
+Provides: ttf-opensymbol
+Recommends: fontconfig
+Description: OpenSymbol TrueType font
+ This package contains the OpenSymbol TrueType font included in
+ LibreOffice. This font contains symbols (like fonts as Wingdings(tm)),
+ bullets (needed for bullets in LibreOffice) and non-latin character
+Homepage: http://www.libreoffice.org
+Original-Maintainer: Debian LibreOffice Maintainers <debian-openoffice@lists.debian.org>
+
+Package: gpick
+Status: install ok installed
+Priority: optional
+Section: graphics
+Installed-Size: 1294
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Version: 0.2.6-1ubuntu2
+Depends: libboost-filesystem1.83.0 (>= 1.83.0), libc6 (>= 2.38), libcairo2 (>= 1.2.4), libexpat1 (>= 2.0.1), libgcc-s1 (>= 3.3.1), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0t64 (>= 2.79.0), libgtk-3-0t64 (>= 3.19.12), liblua5.4-0 (>= 5.4.6), libpango-1.0-0 (>= 1.20.0), libpangocairo-1.0-0 (>= 1.14.0), libstdc++6 (>= 13.1)
+Description: advanced GTK+ color picker
+ gpick is an advanced color picker used to pick colors from anywhere
+ on the screen, mix them to  get new colors, generate shades and tints,
+ and export palettes to common file formats or simply copy them
+ to the clipboard.
+Homepage: http://www.gpick.org
+Original-Maintainer: Elías Alejandro Año Mendoza <ealmdz@gmail.com>
+
+Package: hplip
+Status: install ok installed
+Priority: optional
+Section: utils
+Installed-Size: 425
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Version: 3.23.12+dfsg0-0ubuntu5.4
+Depends: adduser, cups, hplip-data (= 3.23.12+dfsg0-0ubuntu5.4), libhpmud0 (= 3.23.12+dfsg0-0ubuntu5.4), libsane-hpaio (= 3.23.12+dfsg0-0ubuntu5.4), lsb-base, printer-driver-hpcups (= 3.23.12+dfsg0-0ubuntu5.4), python3-dbus, python3-gi, python3-pexpect, python3-pil, wget, python3:any, xz-utils, python3 (<< 3.13), python3 (>= 3.12~), libc6 (>= 2.38), libcups2t64 (>= 1.6.0), libdbus-1-3 (>= 1.9.14), libpython3.12t64 (>= 3.12.1), libsane1 (>= 1.0.27)
+Recommends: avahi-daemon, pkexec, polkitd, printer-driver-postscript-hp, sane-utils
+Suggests: hplip-doc, hplip-gui, python3-notify2, python3-reportlab, system-config-printer
+Conffiles:
+ /etc/dbus-1/system.d/com.hp.hplip.conf 3f3b1250ca68d54419d19d6ddf1b9ad4 obsolete
+Description: HP Linux Printing and Imaging System (HPLIP)
+ The HP Linux Printing and Imaging System provides full support for
+ printing on most HP SFP (single function peripheral) inkjets and many
+ LaserJets, and for scanning, sending faxes and for photo-card access on
+ most HP MFP (multi-function peripheral) printers.
+ .
+ HPLIP is composed of:
+  * System services to handle communications with the printers
+  * HP CUPS backend driver (hp:) with bi-directional communication with
+    HP printers (provides printer status feedback to CUPS and enhanced
+    HPIJS functionality such as 4-side full-bleed printing support)
+  * HP CUPS backend driver for sending faxes (hpfax:)
+  * hpcups CUPS Raster driver to turn rasterized input from the CUPS
+    filter chain into the printer's native format (PCL, LIDIL, ...).
+    (hpcups is shipped in a separate package)
+  * HPIJS Ghostscript IJS driver to rasterize output from PostScript(tm)
+    files or from any other input format supported by Ghostscript, and
+    also for PostScript(tm) to fax conversion support
+    (HPIJS is shipped in a separate package)
+  * Command line utilities to perform printer maintenance, such as
+    ink-level monitoring or pen cleaning and calibration
+  * GUI and command line utility to download data from the photo card
+    interfaces in MFP devices
+  * GUI and command line utilities to interface with the fax functions
+  * A GUI toolbox to access all these functions in a friendly way
+  * HPAIO SANE backend (hpaio) for flatbed and Automatic Document Feeder
+    (ADF) scanning using MFP devices
+ .
+ USB and JetDirect (network) devices are supported.
+Homepage: https://developers.hp.com/hp-linux-imaging-and-printing
+Original-Maintainer: Debian Printing Team <debian-printing@lists.debian.org>
+
+Package: jellyfin-ffmpeg7
+Status: deinstall ok config-files
+Priority: optional
+Section: video
+Installed-Size: 210816
+Maintainer: Jellyfin Packaging Team <packaging@jellyfin.org>
+Architecture: amd64
+Multi-Arch: foreign
+Source: jellyfin-ffmpeg (7.1.4-3)
+Version: 7.1.4-3-noble
+Config-Version: 7.1.4-3-noble
+Replaces: jellyfin-ffmpeg, jellyfin-ffmpeg5, jellyfin-ffmpeg6
+Depends: libbluray2 (>= 1:0.2.2), libbz2-1.0, libc6 (>= 2.38), libelf1t64 (>= 0.142), libexpat1 (>= 2.0.1), libgcc-s1 (>= 3.4), libgmp10 (>= 2:6.3.0+dfsg), libgnutls30t64 (>= 3.8.1), libmp3lame0 (>= 3.100), libopenmpt0t64 (>= 0.3.0), libopus0 (>= 1.1), libpciaccess0, libstdc++6 (>= 13.1), libtheora0 (>= 1.0), libudev1 (>= 183), libvorbis0a (>= 1.1.2), libvorbisenc2 (>= 1.1.2), libvpx9 (>= 1.12.0), libwebp7 (>= 1.3.2), libwebpmux3 (>= 1.3.2), libx11-xcb1 (>= 2:1.8.7), libx264-164 (>= 2:0.164.3108+git31e19f9), libx265-199 (>= 3.5), libxcb-dri3-0 (>= 1.13), libxcb-present0, libxcb-randr0 (>= 1.13), libxcb-shm0, libxcb-sync1, libxcb-xfixes0, libxcb1 (>= 1.9.2), libxshmfence1, libzstd1 (>= 1.5.5), libzvbi0t64 (>= 0.2.35), ocl-icd-libopencl1 | libopencl1, ocl-icd-libopencl1 (>= 1.0) | libopencl-1.2-1
+Suggests: intel-opencl-icd, intel-opencl-icd-legacy
+Conflicts: jellyfin-ffmpeg, jellyfin-ffmpeg5, jellyfin-ffmpeg6
+Description: Tools for transcoding, streaming and playing of multimedia files
+ FFmpeg is the leading multimedia framework, able to decode, encode, transcode,
+ mux, demux, stream, filter and play pretty much anything that humans and
+ machines have created. It supports the most obscure ancient formats up to the
+ cutting edge.
+ .
+ This package contains a static build compatible with all Debian/Ubuntu
+ releases, designed to facilitate Jellyfin on systems with an unpatched version
+ of ffmpeg in their repository. Included files are:
+  * ffmpeg: a command line tool to convert multimedia files between formats
+  * ffprobe: a simple multimedia stream analyzer
+  * vainfo: a command line tool to get information about local VA-API devices
+Homepage: https://ffmpeg.org/
+
+Package: libc6
+Status: install ok installed
+Priority: required
+Section: libs
+Installed-Size: 13433
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Multi-Arch: same
+Source: glibc
+Version: 2.39-0ubuntu8.12
+Replaces: libc6-amd64
+Depends: libgcc-s1
+Recommends: libidn2-0 (>= 2.0.5~)
+Suggests: glibc-doc, debconf | debconf-2.0, locales, libnss-nis, libnss-nisplus
+Breaks: chrony (<< 4.2-3~), cyrus-imapd (<< 3.6.1-2ubuntu1), fakechroot (<< 2.19-3.5), firefox (<< 91~), firefox-esr (<< 91~), gnumach-image-1.8-486 (<< 2:1.8+git20210923~), gnumach-image-1.8-486-dbg (<< 2:1.8+git20210923~), gnumach-image-1.8-xen-486 (<< 2:1.8+git20210923~), gnumach-image-1.8-xen-486-dbg (<< 2:1.8+git20210923~), hurd (<< 1:0.9.git20220301-2), locales (<< 2.39), locales-all (<< 2.39), nscd (<< 2.39), python3-iptables (<< 1.0.0-2), scipy (<< 1.10.1-10build1), tinydns (<< 1:1.05-14), valgrind (<< 1:3.19.0-1~)
+Conffiles:
+ /etc/ld.so.conf.d/x86_64-linux-gnu.conf d4e7a7b88a71b5ffd9e2644e71a0cfab
+Description: GNU C Library: Shared libraries
+ Contains the standard libraries that are used by nearly all programs on
+ the system. This package includes shared versions of the standard C library
+ and the standard math library, as well as many others.
+Homepage: https://www.gnu.org/software/libc/libc.html
+Original-Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
+Original-Vcs-Browser: https://salsa.debian.org/glibc-team/glibc
+Original-Vcs-Git: https://salsa.debian.org/glibc-team/glibc.git
+
+Package: libc6
+Status: install ok installed
+Priority: optional
+Section: libs
+Installed-Size: 12295
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: i386
+Multi-Arch: same
+Source: glibc
+Version: 2.39-0ubuntu8.12
+Replaces: libc6-i386, libc6-i686, libc6-xen
+Provides: libc6-i686, libc6-xen
+Depends: libgcc-s1
+Recommends: libidn2-0 (>= 2.0.5~)
+Suggests: glibc-doc, debconf | debconf-2.0, locales, libnss-nis, libnss-nisplus
+Breaks: chrony (<< 4.2-3~), cyrus-imapd (<< 3.6.1-2ubuntu1), fakechroot (<< 2.19-3.5), firefox (<< 91~), firefox-esr (<< 91~), gnumach-image-1.8-486 (<< 2:1.8+git20210923~), gnumach-image-1.8-486-dbg (<< 2:1.8+git20210923~), gnumach-image-1.8-xen-486 (<< 2:1.8+git20210923~), gnumach-image-1.8-xen-486-dbg (<< 2:1.8+git20210923~), hurd (<< 1:0.9.git20220301-2), locales (<< 2.39), locales-all (<< 2.39), nscd (<< 2.39), python3-iptables (<< 1.0.0-2), scipy (<< 1.10.1-10build1), tinydns (<< 1:1.05-14), valgrind (<< 1:3.19.0-1~)
+Conflicts: libc6-i686, libc6-xen
+Conffiles:
+ /etc/ld.so.conf.d/i386-linux-gnu.conf f0822fd4d6027e0e8276fefafe371c54
+Description: GNU C Library: Shared libraries
+ Contains the standard libraries that are used by nearly all programs on
+ the system. This package includes shared versions of the standard C library
+ and the standard math library, as well as many others.
+Homepage: https://www.gnu.org/software/libc/libc.html
+Original-Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
+Original-Vcs-Browser: https://salsa.debian.org/glibc-team/glibc
+Original-Vcs-Git: https://salsa.debian.org/glibc-team/glibc.git
+
+Package: libdistro-info-perl
+Status: install ok installed
+Priority: optional
+Section: perl
+Installed-Size: 26
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: all
+Multi-Arch: foreign
+Source: distro-info
+Version: 1.7ubuntu0.1
+Depends: distro-info-data (>= 0.65~), perl:any
+Description: information about distributions' releases (Perl module)
+ Information about all releases of Debian and Ubuntu.
+ .
+ This package contains a Perl module for parsing the data in distro-info-data.
+ There is also a command line interface in the distro-info package.
+Original-Maintainer: Benjamin Drung <bdrung@debian.org>
+
+Package: libxdo3
+Status: install ok installed
+Priority: optional
+Section: libs
+Installed-Size: 82
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Multi-Arch: same
+Source: xdotool
+Version: 1:3.20160805.1-5build1
+Depends: libc6 (>= 2.4), libx11-6, libxinerama1 (>= 2:1.1.4), libxkbcommon0 (>= 0.5.0), libxtst6
+Description: library for simulating (generating) X11 keyboard/mouse input events
+ libxdo lets you programmatically (or manually) simulate keyboard
+ input and mouse activity, move and resize windows, etc. It does this
+ using X11's XTEST extension and other Xlib functions.
+Homepage: https://github.com/jordansissel/xdotool/
+Original-Maintainer: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+
+Package: lintian
+Status: install ok installed
+Priority: optional
+Section: devel
+Installed-Size: 6958
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: all
+Multi-Arch: foreign
+Version: 2.117.0ubuntu1.6
+Replaces: funny-manpages (<< 1.3-5.1)
+Depends: binutils, bzip2, diffstat, dpkg (>= 1.17.14), dpkg-dev, file, gettext, gpg, intltool-debian, iso-codes, libapt-pkg-perl, libarchive-zip-perl, libberkeleydb-perl, libcapture-tiny-perl, libclass-xsaccessor-perl, libclone-perl, libconfig-tiny-perl, libconst-fast-perl, libcpanel-json-xs-perl, libdata-dpath-perl, libdata-validate-domain-perl, libdata-validate-uri-perl, libdevel-size-perl, libdigest-sha-perl, libdistro-info-perl (>= 1.7ubuntu0.1~), libdpkg-perl, libencode-perl, libemail-address-xs-perl, libfile-basedir-perl, libfile-find-rule-perl, libfont-ttf-perl, libhtml-html5-entities-perl, libhtml-tokeparser-simple-perl, libio-interactive-perl, libipc-run3-perl, libjson-maybexs-perl, liblist-compare-perl, liblist-someutils-perl, liblist-utilsby-perl, libmldbm-perl, libmoo-perl, libmoox-aliases-perl, libnamespace-clean-perl, libpath-tiny-perl, libperlio-gzip-perl, libperlio-utf8-strict-perl, libproc-processtable-perl, libregexp-wildcards-perl, libsereal-decoder-perl, libsereal-encoder-perl, libsort-versions-perl, libsyntax-keyword-try-perl, libterm-readkey-perl, libtext-levenshteinxs-perl, libtext-markdown-discount-perl, libtext-xslate-perl, libtime-duration-perl, libtime-moment-perl, libtimedate-perl, libunicode-utf8-perl, liburi-perl, libwww-mechanize-perl, libwww-perl, libxml-libxml-perl, libyaml-libyaml-perl, lzip | lzip-decompressor, lzop, man-db, patchutils, perl, t1utils, unzip, xz-utils, perl:any
+Suggests: binutils-multiarch, libtext-template-perl
+Breaks: funny-manpages (<< 1.3-5.1), libconfig-model-dpkg-perl (<< 2.151), lintian-brush (<< 0.88), lzd (<< 1.2-3~), pkg-js-tools (<< 0.9.4), pkg-perl-tools (<< 0.53)
+Description: Debian package checker
+ Lintian dissects Debian packages and reports bugs and policy violations. It
+ contains automated checks for many aspects of Debian policy as well as some
+ checks for common errors.
+ .
+ This package is useful for all people who want to check Debian packages for
+ compliance with Debian policy. Every Debian maintainer should check packages
+ with this tool before uploading them to the archive.
+ .
+ This version of Lintian is calibrated for Debian Policy version 4.6.2.
+Homepage: https://lintian.debian.org/
+Original-Maintainer: Debian Lintian Maintainers <lintian-maint@debian.org>
+
+Package: obsidian
+Status: install ok installed
+Priority: optional
+Section: default
+Installed-Size: 347799
+Maintainer: Dynalist Inc.
+Architecture: amd64
+Version: 1.15.1
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Description: 
+  Obsidian
+License: UNLICENSED
+Vendor: Dynalist Inc.
+Homepage: https://obsidian.md
+
+Package: python3-tornado
+Status: install ok installed
+Priority: optional
+Section: web
+Installed-Size: 1750
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: python-tornado
+Version: 6.4.0-1ubuntu0.8
+Depends: ca-certificates, python3 (>= 3~), python3:any, libc6 (>= 2.4)
+Suggests: python3-pycurl, python-tornado-doc, python3-twisted
+Breaks: mitmproxy (<< 5.0~), pcs (<< 0.10.5-1~)
+Description: scalable, non-blocking web server and tools - Python 3 package
+ Tornado is a Python web framework and asynchronous networking library,
+ originally developed at FriendFeed. By using non-blocking network I/O,
+ Tornado can scale to tens of thousands of open connections, making it ideal
+ for long polling, WebSockets, and other applications that require a
+ long-lived connection to each user.
+ .
+ This is the Python 3 version of the package.
+Homepage: https://www.tornadoweb.org/
+Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+
+Package: spotify-client
+Status: install ok installed
+Priority: optional
+Section: sound
+Maintainer: Spotify <tux.com>
+Architecture: amd64
+Version: 1:1.3.4.258.gc60b10b0946a
+Depends: libc6 (>= 2.39), libasound2, libatk-bridge2.0-0, libatomic1, libgbm1, libglib2.0-0, libgtk-3-0, libnss3, libxshmfence1, libxss1, libxtst6, xdg-utils, libayatana-appindicator3-1
+Recommends: libavcodec61 | libavcodec60 | libavcodec58, libavformat61 | libavformat60 | libavformat58
+Suggests: libnotify4
+Description: Spotify streaming music client
+Homepage: https://www.spotify.com
+License: https://www.spotify.com/legal/end-user-agreement
+
+Package: xdotool
+Status: install ok installed
+Priority: optional
+Section: x11
+Installed-Size: 121
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Multi-Arch: foreign
+Version: 1:3.20160805.1-5build1
+Depends: libc6 (>= 2.38), libx11-6, libxdo3 (>= 1:3.20150503.1)
+Description: simulate (generate) X11 keyboard/mouse input events
+ xdotool lets you programmatically (or manually) simulate keyboard
+ input and mouse activity, move and resize windows, etc. It does this
+ using X11's XTEST extension and other Xlib functions.
+Homepage: https://github.com/jordansissel/xdotool/
+Original-Maintainer: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+
+Package: xvfb
+Status: install ok installed
+Priority: optional
+Section: x11
+Installed-Size: 2141
+Maintainer: Ubuntu X-SWAT <ubuntu-x@lists.ubuntu.com>
+Architecture: amd64
+Multi-Arch: foreign
+Source: xorg-server
+Version: 2:21.1.12-1ubuntu1.9
+Provides: xserver
+Depends: xserver-common (>= 2:21.1.12-1ubuntu1.9), libaudit1 (>= 1:2.2.1), libc6 (>= 2.38), libgcrypt20 (>= 1.10.0), libgl1, libpixman-1-0 (>= 0.30.0), libselinux1 (>= 3.1~), libsystemd0, libunwind8, libxau6 (>= 1:1.0.9), libxdmcp6, libxfont2 (>= 1:2.0.1), xauth, x11-xkb-utils
+Recommends: libgl1-mesa-dri
+Description: Virtual Framebuffer 'fake' X server
+ Xvfb provides an X server that can run on machines with no display hardware
+ and no physical input devices. It emulates a dumb framebuffer using virtual
+ memory. The primary use of this server was intended to be server testing,
+ but other novel uses for it have been found, including testing clients
+ against unusual depths and screen configurations, doing batch processing with
+ Xvfb as a background rendering engine, load testing, as an aid to porting the
+ X server to a new platform, and providing an unobtrusive way to run
+ applications that don't really need an X server but insist on having one
+ anyway.
+ .
+ This package also contains a convenience script called xvfb-run which
+ simplifies the automated execution of X clients in a virtual server
+ environment. This convenience script requires the use of the xauth
+ program.
+ .
+ More information about X.Org can be found at:
+ <URL:https://www.x.org>
+ .
+ This package is built from the X.org xserver module.
+Homepage: https://www.x.org/
+Original-Maintainer: Debian X Strike Force <debian-x@lists.debian.org>

@@ -1,0 +1,58 @@
+
+Start-Date: 2026-03-16  12:48:52
+Commandline: apt upgrade
+Requested-By: testuser (1000)
+Upgrade: spotify-client:amd64 (1:1.2.77.358.g4339a634, 1:1.2.82.428.g0ac8be2b)
+End-Date: 2026-03-16  12:48:54
+
+Start-Date: 2026-05-08  22:56:58
+Commandline: apt remove ocelotgui
+Requested-By: testuser (1000)
+Remove: ocelotgui:amd64 (2.6.0-1)
+End-Date: 2026-05-08  22:56:59
+
+Start-Date: 2026-05-10  09:02:18
+Commandline: /usr/sbin/synaptic
+Requested-By: testuser (1000)
+Install: libportal1:amd64 (0.7.1-5build5, automatic), libportal-gtk3-1:amd64 (0.7.1-5build5, automatic), gcolor3:amd64 (2.4.0-2build2)
+End-Date: 2026-05-10  09:02:20
+
+Start-Date: 2026-05-10  09:03:29
+Commandline: /usr/sbin/synaptic
+Requested-By: testuser (1000)
+Install: gpick:amd64 (0.2.6-1ubuntu2)
+Purge: gcolor3:amd64 (2.4.0-2build2)
+End-Date: 2026-05-10  09:03:35
+
+Start-Date: 2026-11-03  21:37:03
+Commandline: apt install xdotool xvfb
+Requested-By: testuser (1000)
+Install: libxdo3:amd64 (1:3.20160805.1-5build1, automatic), xdotool:amd64 (1:3.20160805.1-5build1), xvfb:amd64 (2:21.1.12-1ubuntu1.9)
+End-Date: 2026-11-03  21:37:05
+
+Start-Date: 2026-11-12  06:21:20
+Commandline: /usr/bin/unattended-upgrade
+Upgrade: gstreamer1.0-gl:amd64 (1.24.2-1ubuntu0.5, 1.24.2-1ubuntu0.6), libgstreamer-gl1.0-0:amd64 (1.24.2-1ubuntu0.5, 1.24.2-1ubuntu0.6), gstreamer1.0-alsa:amd64 (1.24.2-1ubuntu0.5, 1.24.2-1ubuntu0.6), gir1.2-gst-plugins-base-1.0:amd64 (1.24.2-1ubuntu0.5, 1.24.2-1ubuntu0.6), gstreamer1.0-x:amd64 (1.24.2-1ubuntu0.5, 1.24.2-1ubuntu0.6), gstreamer1.0-plugins-base:amd64 (1.24.2-1ubuntu0.5, 1.24.2-1ubuntu0.6), libgstreamer-plugins-base1.0-0:amd64 (1.24.2-1ubuntu0.5, 1.24.2-1ubuntu0.6)
+End-Date: 2026-11-12  06:21:21
+
+Start-Date: 2026-11-12  06:21:24
+Commandline: /usr/bin/unattended-upgrade
+Upgrade: libsane-hpaio:amd64 (3.23.12+dfsg0-0ubuntu5.1, 3.23.12+dfsg0-0ubuntu5.3), printer-driver-postscript-hp:amd64 (3.23.12+dfsg0-0ubuntu5.1, 3.23.12+dfsg0-0ubuntu5.3), libhpmud0:amd64 (3.23.12+dfsg0-0ubuntu5.1, 3.23.12+dfsg0-0ubuntu5.3), hplip:amd64 (3.23.12+dfsg0-0ubuntu5.1, 3.23.12+dfsg0-0ubuntu5.3), hplip-data:amd64 (3.23.12+dfsg0-0ubuntu5.1, 3.23.12+dfsg0-0ubuntu5.3), printer-driver-hpcups:amd64 (3.23.12+dfsg0-0ubuntu5.1, 3.23.12+dfsg0-0ubuntu5.3)
+End-Date: 2026-11-12  06:21:30
+
+Start-Date: 2026-11-12  06:21:33
+Commandline: /usr/bin/unattended-upgrade
+Upgrade: python3-tornado:amd64 (6.4.0-1ubuntu0.7, 6.4.0-1ubuntu0.8)
+End-Date: 2026-11-12  06:21:34
+
+Start-Date: 2026-11-13  11:58:30
+Requested-By: testuser (1000)
+Install: libdistro-info-perl:amd64 (1.7ubuntu0.1, automatic)
+Upgrade: lintian:amd64 (2.117.0ubuntu1.5, 2.117.0ubuntu1.6), containerd.io:amd64 (2.4.2-3~ubuntu.24.04~noble, 2.4.2-4~ubuntu.24.04~noble), libreoffice-calc:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), docker-compose-plugin:amd64 (5.7.0-1~ubuntu.24.04~noble, 5.7.1-1~ubuntu.24.04~noble), libc6-i386:amd64 (2.39-0ubuntu8.9, 2.39-0ubuntu8.12), libreoffice-gnome:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), uno-libs-private:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libreoffice-base-core:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libreoffice-uiconfig-impress:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libreoffice-core:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), postgresql-14:amd64 (14.24-1.pgdg24.04+2, 14.25-1.pgdg24.04+1), libreoffice-uiconfig-math:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libreoffice-common:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libreoffice-uiconfig-writer:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libuno-sal3t64:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), ure:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libreoffice-draw:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libreoffice-uiconfig-calc:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libreoffice-impress:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), fonts-opensymbol:amd64 (4:102.12+LibO26.2.6.3-0ubuntu0.24.04.1~lo1, 4:102.12+LibO26.8.2.2-0ubuntu0.24.04.1~lo2), docker-buildx-plugin:amd64 (0.38.1-1~ubuntu.24.04~noble, 0.39.0-1~ubuntu.24.04~noble), libc6:amd64 (2.39-0ubuntu8.9, 2.39-0ubuntu8.12), libc6:i386 (2.39-0ubuntu8.9, 2.39-0ubuntu8.12), locales:amd64 (2.39-0ubuntu8.9, 2.39-0ubuntu8.12), postgresql-client-14:amd64 (14.24-1.pgdg24.04+2, 14.25-1.pgdg24.04+1), libreoffice-style-colibre:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libreoffice-writer:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), librewolf:amd64 (159.0.1-1, 160.0-1), python3-pil.imagetk:amd64 (10.2.0-1ubuntu1.4, 10.2.0-1ubuntu1.5), libreoffice-uiconfig-draw:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), snapd:amd64 (2.77.1+ubuntu24.04, 2.78+ubuntu24.04), python3-distro-info:amd64 (1.7build1, 1.7ubuntu0.1), postgresql-common:amd64 (293.pgdg24.04+1, 294.pgdg24.04+2), python3-pil:amd64 (10.2.0-1ubuntu1.4, 10.2.0-1ubuntu1.5), libreoffice-help-common:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), python3-uno:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), distro-info:amd64 (1.7build1, 1.7ubuntu0.1), libc-dev-bin:amd64 (2.39-0ubuntu8.9, 2.39-0ubuntu8.12), postgresql-client-common:amd64 (293.pgdg24.04+1, 294.pgdg24.04+2), libc-bin:amd64 (2.39-0ubuntu8.9, 2.39-0ubuntu8.12), libc-devtools:amd64 (2.39-0ubuntu8.9, 2.39-0ubuntu8.12), libc6-dbg:amd64 (2.39-0ubuntu8.9, 2.39-0ubuntu8.12), libc6-dev:amd64 (2.39-0ubuntu8.9, 2.39-0ubuntu8.12), libreoffice-style-yaru:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libreoffice-uiconfig-common:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), vivaldi-stable:amd64 (8.3.4191.30-1, 8.3.4191.44-1), libreoffice-math:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libreoffice-gtk3:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libuno-cppu3t64:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libuno-cppuhelpergcc3-3t64:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libreoffice-help-en-us:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libpq5:amd64 (18.6-1.pgdg24.04+2, 18.7-1.pgdg24.04+2), libreoffice-style-elementary:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libuno-purpenvhelpergcc3-3t64:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), libuno-salhelpergcc3-3t64:amd64 (4:26.2.6.3-0ubuntu0.24.04.1~lo1, 4:26.8.2.2-0ubuntu0.24.04.1~lo2), linux-firmware-amd-graphics:amd64 (20240318.git3b128b60-0ubuntu3.4, 20240318.git3b128b60-0ubuntu3.5)
+End-Date: 2026-11-13  12:00:06
+
+Start-Date: 2026-11-13  12:01:07
+Commandline: apt install -qq /tmp/obsidianmd.deb
+Requested-By: testuser (1000)
+Upgrade: obsidian:amd64 (1.15.0, 1.15.1)
+End-Date: 2026-11-13  12:01:20
