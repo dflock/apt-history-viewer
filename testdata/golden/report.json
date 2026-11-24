@@ -1,0 +1,1866 @@
+{
+  "input": "../../testdata/real",
+  "host": "testhost",
+  "tz": "Europe/London",
+  "generated": "2026-11-24T12:00:00Z",
+  "from": "2026-03-16T12:48:52Z",
+  "to": "2026-11-13T12:01:20Z",
+  "aptFrom": "2026-03-16T12:48:52Z",
+  "dpkgFrom": "2026-03-16T12:48:52Z",
+  "hasBaseline": true,
+  "transactions": [
+    {
+      "id": 0,
+      "start": "2026-03-16T12:48:52Z",
+      "end": "2026-03-16T12:48:54Z",
+      "origin": "user-cli",
+      "manual": true,
+      "tool": "apt",
+      "commandline": "apt upgrade",
+      "user": "testuser",
+      "uid": 1000,
+      "changes": [
+        {
+          "name": "spotify-client",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "1:1.2.77.358.g4339a634",
+          "new": "1:1.2.82.428.g0ac8be2b",
+          "requested": true,
+          "at": "2026-03-16T12:48:52Z"
+        }
+      ],
+      "sources": [
+        "apt",
+        "dpkg"
+      ],
+      "file": "../../testdata/real/var/log/apt/history.log",
+      "line": 2
+    },
+    {
+      "id": 1,
+      "start": "2026-05-08T22:56:58+01:00",
+      "end": "2026-05-08T22:56:59+01:00",
+      "origin": "user-cli",
+      "manual": true,
+      "tool": "apt",
+      "commandline": "apt remove ocelotgui",
+      "user": "testuser",
+      "uid": 1000,
+      "changes": [
+        {
+          "name": "ocelotgui",
+          "arch": "amd64",
+          "action": "remove",
+          "old": "2.6.0-1",
+          "requested": true,
+          "named": true,
+          "at": "2026-05-08T22:56:58+01:00"
+        }
+      ],
+      "sources": [
+        "apt",
+        "dpkg"
+      ],
+      "file": "../../testdata/real/var/log/apt/history.log",
+      "line": 8
+    },
+    {
+      "id": 2,
+      "start": "2026-05-10T09:02:18+01:00",
+      "end": "2026-05-10T09:02:20+01:00",
+      "origin": "user-gui",
+      "manual": true,
+      "tool": "synaptic",
+      "commandline": "/usr/sbin/synaptic",
+      "user": "testuser",
+      "uid": 1000,
+      "changes": [
+        {
+          "name": "libportal1",
+          "arch": "amd64",
+          "action": "install",
+          "new": "0.7.1-5build5",
+          "dependency": true,
+          "at": "2026-05-10T09:02:18+01:00"
+        },
+        {
+          "name": "libportal-gtk3-1",
+          "arch": "amd64",
+          "action": "install",
+          "new": "0.7.1-5build5",
+          "dependency": true,
+          "at": "2026-05-10T09:02:18+01:00"
+        },
+        {
+          "name": "gcolor3",
+          "arch": "amd64",
+          "action": "install",
+          "new": "2.4.0-2build2",
+          "requested": true,
+          "at": "2026-05-10T09:02:18+01:00"
+        }
+      ],
+      "sources": [
+        "apt",
+        "dpkg"
+      ],
+      "file": "../../testdata/real/var/log/apt/history.log",
+      "line": 14
+    },
+    {
+      "id": 3,
+      "start": "2026-05-10T09:03:29+01:00",
+      "end": "2026-05-10T09:03:35+01:00",
+      "origin": "user-gui",
+      "manual": true,
+      "tool": "synaptic",
+      "commandline": "/usr/sbin/synaptic",
+      "user": "testuser",
+      "uid": 1000,
+      "changes": [
+        {
+          "name": "gpick",
+          "arch": "amd64",
+          "action": "install",
+          "new": "0.2.6-1ubuntu2",
+          "requested": true,
+          "at": "2026-05-10T09:03:30+01:00"
+        },
+        {
+          "name": "gcolor3",
+          "arch": "amd64",
+          "action": "purge",
+          "old": "2.4.0-2build2",
+          "requested": true,
+          "at": "2026-05-10T09:03:30+01:00"
+        }
+      ],
+      "sources": [
+        "apt",
+        "dpkg"
+      ],
+      "file": "../../testdata/real/var/log/apt/history.log",
+      "line": 20
+    },
+    {
+      "id": 4,
+      "start": "2026-11-03T21:37:03Z",
+      "end": "2026-11-03T21:37:05Z",
+      "origin": "user-cli",
+      "manual": true,
+      "tool": "apt",
+      "commandline": "apt install xdotool xvfb",
+      "user": "testuser",
+      "uid": 1000,
+      "changes": [
+        {
+          "name": "libxdo3",
+          "arch": "amd64",
+          "action": "install",
+          "new": "1:3.20160805.1-5build1",
+          "dependency": true,
+          "at": "2026-11-03T21:37:03Z"
+        },
+        {
+          "name": "xdotool",
+          "arch": "amd64",
+          "action": "install",
+          "new": "1:3.20160805.1-5build1",
+          "requested": true,
+          "named": true,
+          "at": "2026-11-03T21:37:03Z"
+        },
+        {
+          "name": "xvfb",
+          "arch": "amd64",
+          "action": "install",
+          "new": "2:21.1.12-1ubuntu1.9",
+          "requested": true,
+          "named": true,
+          "at": "2026-11-03T21:37:03Z"
+        }
+      ],
+      "sources": [
+        "apt",
+        "dpkg"
+      ],
+      "file": "../../testdata/real/var/log/apt/history.log",
+      "line": 27
+    },
+    {
+      "id": 5,
+      "start": "2026-11-12T06:21:20Z",
+      "end": "2026-11-12T06:21:21Z",
+      "origin": "unattended",
+      "manual": false,
+      "tool": "unattended-upgrade",
+      "commandline": "/usr/bin/unattended-upgrade",
+      "changes": [
+        {
+          "name": "gstreamer1.0-gl",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "1.24.2-1ubuntu0.5",
+          "new": "1.24.2-1ubuntu0.6",
+          "requested": true,
+          "at": "2026-11-12T06:21:20Z"
+        },
+        {
+          "name": "libgstreamer-gl1.0-0",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "1.24.2-1ubuntu0.5",
+          "new": "1.24.2-1ubuntu0.6",
+          "requested": true,
+          "at": "2026-11-12T06:21:20Z"
+        },
+        {
+          "name": "gstreamer1.0-alsa",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "1.24.2-1ubuntu0.5",
+          "new": "1.24.2-1ubuntu0.6",
+          "requested": true,
+          "at": "2026-11-12T06:21:20Z"
+        },
+        {
+          "name": "gir1.2-gst-plugins-base-1.0",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "1.24.2-1ubuntu0.5",
+          "new": "1.24.2-1ubuntu0.6",
+          "requested": true,
+          "at": "2026-11-12T06:21:20Z"
+        },
+        {
+          "name": "gstreamer1.0-x",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "1.24.2-1ubuntu0.5",
+          "new": "1.24.2-1ubuntu0.6",
+          "requested": true,
+          "at": "2026-11-12T06:21:21Z"
+        },
+        {
+          "name": "gstreamer1.0-plugins-base",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "1.24.2-1ubuntu0.5",
+          "new": "1.24.2-1ubuntu0.6",
+          "requested": true,
+          "at": "2026-11-12T06:21:20Z"
+        },
+        {
+          "name": "libgstreamer-plugins-base1.0-0",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "1.24.2-1ubuntu0.5",
+          "new": "1.24.2-1ubuntu0.6",
+          "requested": true,
+          "at": "2026-11-12T06:21:20Z"
+        }
+      ],
+      "sources": [
+        "apt",
+        "dpkg"
+      ],
+      "file": "../../testdata/real/var/log/apt/history.log",
+      "line": 33
+    },
+    {
+      "id": 6,
+      "start": "2026-11-12T06:21:24Z",
+      "end": "2026-11-12T06:21:30Z",
+      "origin": "unattended",
+      "manual": false,
+      "tool": "unattended-upgrade",
+      "commandline": "/usr/bin/unattended-upgrade",
+      "changes": [
+        {
+          "name": "libsane-hpaio",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "3.23.12+dfsg0-0ubuntu5.1",
+          "new": "3.23.12+dfsg0-0ubuntu5.3",
+          "requested": true,
+          "at": "2026-11-12T06:21:24Z"
+        },
+        {
+          "name": "printer-driver-postscript-hp",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "3.23.12+dfsg0-0ubuntu5.1",
+          "new": "3.23.12+dfsg0-0ubuntu5.3",
+          "requested": true,
+          "at": "2026-11-12T06:21:24Z"
+        },
+        {
+          "name": "libhpmud0",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "3.23.12+dfsg0-0ubuntu5.1",
+          "new": "3.23.12+dfsg0-0ubuntu5.3",
+          "requested": true,
+          "at": "2026-11-12T06:21:25Z"
+        },
+        {
+          "name": "hplip",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "3.23.12+dfsg0-0ubuntu5.1",
+          "new": "3.23.12+dfsg0-0ubuntu5.3",
+          "requested": true,
+          "at": "2026-11-12T06:21:25Z"
+        },
+        {
+          "name": "hplip-data",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "3.23.12+dfsg0-0ubuntu5.1",
+          "new": "3.23.12+dfsg0-0ubuntu5.3",
+          "requested": true,
+          "at": "2026-11-12T06:21:25Z"
+        },
+        {
+          "name": "printer-driver-hpcups",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "3.23.12+dfsg0-0ubuntu5.1",
+          "new": "3.23.12+dfsg0-0ubuntu5.3",
+          "requested": true,
+          "at": "2026-11-12T06:21:25Z"
+        }
+      ],
+      "sources": [
+        "apt",
+        "dpkg"
+      ],
+      "file": "../../testdata/real/var/log/apt/history.log",
+      "line": 38
+    },
+    {
+      "id": 7,
+      "start": "2026-11-12T06:21:33Z",
+      "end": "2026-11-12T06:21:34Z",
+      "origin": "unattended",
+      "manual": false,
+      "tool": "unattended-upgrade",
+      "commandline": "/usr/bin/unattended-upgrade",
+      "changes": [
+        {
+          "name": "python3-tornado",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "6.4.0-1ubuntu0.7",
+          "new": "6.4.0-1ubuntu0.8",
+          "requested": true,
+          "at": "2026-11-12T06:21:33Z"
+        }
+      ],
+      "sources": [
+        "apt",
+        "dpkg"
+      ],
+      "file": "../../testdata/real/var/log/apt/history.log",
+      "line": 43
+    },
+    {
+      "id": 8,
+      "start": "2026-11-13T11:58:30Z",
+      "end": "2026-11-13T12:00:06Z",
+      "origin": "user-cli",
+      "manual": true,
+      "tool": "aptitude",
+      "user": "testuser",
+      "uid": 1000,
+      "changes": [
+        {
+          "name": "libdistro-info-perl",
+          "arch": "all",
+          "action": "install",
+          "new": "1.7ubuntu0.1",
+          "dependency": true,
+          "at": "2026-11-13T11:58:52Z"
+        },
+        {
+          "name": "lintian",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "2.117.0ubuntu1.5",
+          "new": "2.117.0ubuntu1.6",
+          "requested": true,
+          "at": "2026-11-13T11:58:55Z"
+        },
+        {
+          "name": "containerd.io",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "2.4.2-3~ubuntu.24.04~noble",
+          "new": "2.4.2-4~ubuntu.24.04~noble",
+          "requested": true,
+          "at": "2026-11-13T11:58:50Z"
+        },
+        {
+          "name": "libreoffice-calc",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:34Z"
+        },
+        {
+          "name": "docker-compose-plugin",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "5.7.0-1~ubuntu.24.04~noble",
+          "new": "5.7.1-1~ubuntu.24.04~noble",
+          "requested": true,
+          "at": "2026-11-13T11:58:51Z"
+        },
+        {
+          "name": "libc6-i386",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "2.39-0ubuntu8.9",
+          "new": "2.39-0ubuntu8.12",
+          "requested": true,
+          "at": "2026-11-13T11:58:30Z"
+        },
+        {
+          "name": "libreoffice-gnome",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:37Z"
+        },
+        {
+          "name": "uno-libs-private",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:39Z"
+        },
+        {
+          "name": "libreoffice-base-core",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:40Z"
+        },
+        {
+          "name": "libreoffice-uiconfig-impress",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:34Z"
+        },
+        {
+          "name": "libreoffice-core",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:38Z"
+        },
+        {
+          "name": "postgresql-14",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "14.24-1.pgdg24.04+2",
+          "new": "14.25-1.pgdg24.04+1",
+          "requested": true,
+          "at": "2026-11-13T11:58:56Z"
+        },
+        {
+          "name": "libreoffice-uiconfig-math",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:35Z"
+        },
+        {
+          "name": "libreoffice-common",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:39Z"
+        },
+        {
+          "name": "libreoffice-uiconfig-writer",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:41Z"
+        },
+        {
+          "name": "libuno-sal3t64",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:40Z"
+        },
+        {
+          "name": "ure",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:35Z"
+        },
+        {
+          "name": "libreoffice-draw",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:35Z"
+        },
+        {
+          "name": "libreoffice-uiconfig-calc",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:33Z"
+        },
+        {
+          "name": "libreoffice-impress",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:34Z"
+        },
+        {
+          "name": "fonts-opensymbol",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:102.12+LibO26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:102.12+LibO26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:41Z"
+        },
+        {
+          "name": "docker-buildx-plugin",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "0.38.1-1~ubuntu.24.04~noble",
+          "new": "0.39.0-1~ubuntu.24.04~noble",
+          "requested": true,
+          "at": "2026-11-13T11:58:51Z"
+        },
+        {
+          "name": "libc6",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "2.39-0ubuntu8.9",
+          "new": "2.39-0ubuntu8.12",
+          "requested": true,
+          "at": "2026-11-13T11:58:31Z"
+        },
+        {
+          "name": "libc6",
+          "arch": "i386",
+          "action": "upgrade",
+          "old": "2.39-0ubuntu8.9",
+          "new": "2.39-0ubuntu8.12",
+          "requested": true,
+          "at": "2026-11-13T11:58:32Z"
+        },
+        {
+          "name": "locales",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "2.39-0ubuntu8.9",
+          "new": "2.39-0ubuntu8.12",
+          "requested": true,
+          "at": "2026-11-13T11:58:49Z"
+        },
+        {
+          "name": "postgresql-client-14",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "14.24-1.pgdg24.04+2",
+          "new": "14.25-1.pgdg24.04+1",
+          "requested": true,
+          "at": "2026-11-13T11:58:56Z"
+        },
+        {
+          "name": "libreoffice-style-colibre",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:41Z"
+        },
+        {
+          "name": "libreoffice-writer",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:38Z"
+        },
+        {
+          "name": "librewolf",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "159.0.1-1",
+          "new": "160.0-1",
+          "requested": true,
+          "at": "2026-11-13T11:58:53Z"
+        },
+        {
+          "name": "python3-pil.imagetk",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "10.2.0-1ubuntu1.4",
+          "new": "10.2.0-1ubuntu1.5",
+          "requested": true,
+          "at": "2026-11-13T11:58:57Z"
+        },
+        {
+          "name": "libreoffice-uiconfig-draw",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:34Z"
+        },
+        {
+          "name": "snapd",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "2.77.1+ubuntu24.04",
+          "new": "2.78+ubuntu24.04",
+          "requested": true,
+          "at": "2026-11-13T11:58:58Z"
+        },
+        {
+          "name": "python3-distro-info",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "1.7build1",
+          "new": "1.7ubuntu0.1",
+          "requested": true,
+          "at": "2026-11-13T11:58:50Z"
+        },
+        {
+          "name": "postgresql-common",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "293.pgdg24.04+1",
+          "new": "294.pgdg24.04+2",
+          "requested": true,
+          "at": "2026-11-13T11:58:41Z"
+        },
+        {
+          "name": "python3-pil",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "10.2.0-1ubuntu1.4",
+          "new": "10.2.0-1ubuntu1.5",
+          "requested": true,
+          "at": "2026-11-13T11:58:58Z"
+        },
+        {
+          "name": "libreoffice-help-common",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:36Z"
+        },
+        {
+          "name": "python3-uno",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:40Z"
+        },
+        {
+          "name": "distro-info",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "1.7build1",
+          "new": "1.7ubuntu0.1",
+          "requested": true,
+          "at": "2026-11-13T11:58:49Z"
+        },
+        {
+          "name": "libc-dev-bin",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "2.39-0ubuntu8.9",
+          "new": "2.39-0ubuntu8.12",
+          "requested": true,
+          "at": "2026-11-13T11:58:31Z"
+        },
+        {
+          "name": "postgresql-client-common",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "293.pgdg24.04+1",
+          "new": "294.pgdg24.04+2",
+          "requested": true,
+          "at": "2026-11-13T11:58:41Z"
+        },
+        {
+          "name": "libc-bin",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "2.39-0ubuntu8.9",
+          "new": "2.39-0ubuntu8.12",
+          "requested": true,
+          "at": "2026-11-13T11:58:32Z"
+        },
+        {
+          "name": "libc-devtools",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "2.39-0ubuntu8.9",
+          "new": "2.39-0ubuntu8.12",
+          "requested": true,
+          "at": "2026-11-13T11:58:31Z"
+        },
+        {
+          "name": "libc6-dbg",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "2.39-0ubuntu8.9",
+          "new": "2.39-0ubuntu8.12",
+          "requested": true,
+          "at": "2026-11-13T11:58:31Z"
+        },
+        {
+          "name": "libc6-dev",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "2.39-0ubuntu8.9",
+          "new": "2.39-0ubuntu8.12",
+          "requested": true,
+          "at": "2026-11-13T11:58:31Z"
+        },
+        {
+          "name": "libreoffice-style-yaru",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:52Z"
+        },
+        {
+          "name": "libreoffice-uiconfig-common",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:35Z"
+        },
+        {
+          "name": "vivaldi-stable",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "8.3.4191.30-1",
+          "new": "8.3.4191.44-1",
+          "requested": true,
+          "at": "2026-11-13T11:58:42Z"
+        },
+        {
+          "name": "libreoffice-math",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:35Z"
+        },
+        {
+          "name": "libreoffice-gtk3",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:37Z"
+        },
+        {
+          "name": "libuno-cppu3t64",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:40Z"
+        },
+        {
+          "name": "libuno-cppuhelpergcc3-3t64",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:39Z"
+        },
+        {
+          "name": "libreoffice-help-en-us",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:36Z"
+        },
+        {
+          "name": "libpq5",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "18.6-1.pgdg24.04+2",
+          "new": "18.7-1.pgdg24.04+2",
+          "requested": true,
+          "at": "2026-11-13T11:58:52Z"
+        },
+        {
+          "name": "libreoffice-style-elementary",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:52Z"
+        },
+        {
+          "name": "libuno-purpenvhelpergcc3-3t64",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:40Z"
+        },
+        {
+          "name": "libuno-salhelpergcc3-3t64",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "4:26.2.6.3-0ubuntu0.24.04.1~lo1",
+          "new": "4:26.8.2.2-0ubuntu0.24.04.1~lo2",
+          "requested": true,
+          "at": "2026-11-13T11:58:40Z"
+        },
+        {
+          "name": "linux-firmware-amd-graphics",
+          "arch": "all",
+          "action": "upgrade",
+          "old": "20240318.git3b128b60-0ubuntu3.4",
+          "new": "20240318.git3b128b60-0ubuntu3.5",
+          "requested": true,
+          "at": "2026-11-13T11:58:55Z"
+        }
+      ],
+      "sources": [
+        "apt",
+        "dpkg"
+      ],
+      "file": "../../testdata/real/var/log/apt/history.log",
+      "line": 48
+    },
+    {
+      "id": 9,
+      "start": "2026-11-13T12:01:07Z",
+      "end": "2026-11-13T12:01:20Z",
+      "origin": "user-cli",
+      "manual": true,
+      "tool": "apt",
+      "commandline": "apt install -qq /tmp/obsidianmd.deb",
+      "user": "testuser",
+      "uid": 1000,
+      "changes": [
+        {
+          "name": "obsidian",
+          "arch": "amd64",
+          "action": "upgrade",
+          "old": "1.15.0",
+          "new": "1.15.1",
+          "requested": true,
+          "at": "2026-11-13T12:01:07Z"
+        }
+      ],
+      "sources": [
+        "apt",
+        "dpkg"
+      ],
+      "file": "../../testdata/real/var/log/apt/history.log",
+      "line": 54
+    }
+  ],
+  "packages": [
+    {
+      "name": "bash",
+      "arch": "amd64",
+      "installed": "5.2.21-2ubuntu4",
+      "autoNow": true,
+      "preHistory": true,
+      "events": []
+    },
+    {
+      "name": "containerd.io",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 2
+        }
+      ]
+    },
+    {
+      "name": "coreutils",
+      "arch": "amd64",
+      "installed": "9.4-3ubuntu6.3",
+      "autoNow": true,
+      "preHistory": true,
+      "events": []
+    },
+    {
+      "name": "distro-info",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 37
+        }
+      ]
+    },
+    {
+      "name": "docker-buildx-plugin",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 21
+        }
+      ]
+    },
+    {
+      "name": "docker-compose-plugin",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 4
+        }
+      ]
+    },
+    {
+      "name": "fonts-opensymbol",
+      "arch": "all",
+      "installed": "4:102.12+LibO26.8.2.2-0ubuntu0.24.04.1~lo2",
+      "autoNow": true,
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 20
+        }
+      ]
+    },
+    {
+      "name": "gcolor3",
+      "arch": "amd64",
+      "events": [
+        {
+          "tx": 2,
+          "change": 2
+        },
+        {
+          "tx": 3,
+          "change": 1
+        }
+      ]
+    },
+    {
+      "name": "gir1.2-gst-plugins-base-1.0",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 5,
+          "change": 3
+        }
+      ]
+    },
+    {
+      "name": "gpick",
+      "arch": "amd64",
+      "installed": "0.2.6-1ubuntu2",
+      "events": [
+        {
+          "tx": 3,
+          "change": 0
+        }
+      ]
+    },
+    {
+      "name": "gstreamer1.0-alsa",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 5,
+          "change": 2
+        }
+      ]
+    },
+    {
+      "name": "gstreamer1.0-gl",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 5,
+          "change": 0
+        }
+      ]
+    },
+    {
+      "name": "gstreamer1.0-plugins-base",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 5,
+          "change": 5
+        }
+      ]
+    },
+    {
+      "name": "gstreamer1.0-x",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 5,
+          "change": 4
+        }
+      ]
+    },
+    {
+      "name": "hplip",
+      "arch": "amd64",
+      "installed": "3.23.12+dfsg0-0ubuntu5.4",
+      "autoNow": true,
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 6,
+          "change": 3
+        }
+      ]
+    },
+    {
+      "name": "hplip-data",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 6,
+          "change": 4
+        }
+      ]
+    },
+    {
+      "name": "jellyfin-ffmpeg7",
+      "arch": "amd64",
+      "state": "config-files",
+      "preHistory": true,
+      "events": []
+    },
+    {
+      "name": "libc-bin",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 40
+        }
+      ]
+    },
+    {
+      "name": "libc-dev-bin",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 38
+        }
+      ]
+    },
+    {
+      "name": "libc-devtools",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 41
+        }
+      ]
+    },
+    {
+      "name": "libc6",
+      "arch": "amd64",
+      "installed": "2.39-0ubuntu8.12",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 22
+        }
+      ]
+    },
+    {
+      "name": "libc6",
+      "arch": "i386",
+      "installed": "2.39-0ubuntu8.12",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 23
+        }
+      ]
+    },
+    {
+      "name": "libc6-dbg",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 42
+        }
+      ]
+    },
+    {
+      "name": "libc6-dev",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 43
+        }
+      ]
+    },
+    {
+      "name": "libc6-i386",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 5
+        }
+      ]
+    },
+    {
+      "name": "libdistro-info-perl",
+      "arch": "all",
+      "installed": "1.7ubuntu0.1",
+      "autoNow": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 0
+        }
+      ]
+    },
+    {
+      "name": "libgstreamer-gl1.0-0",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 5,
+          "change": 1
+        }
+      ]
+    },
+    {
+      "name": "libgstreamer-plugins-base1.0-0",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 5,
+          "change": 6
+        }
+      ]
+    },
+    {
+      "name": "libhpmud0",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 6,
+          "change": 2
+        }
+      ]
+    },
+    {
+      "name": "libportal-gtk3-1",
+      "arch": "amd64",
+      "events": [
+        {
+          "tx": 2,
+          "change": 1
+        }
+      ]
+    },
+    {
+      "name": "libportal1",
+      "arch": "amd64",
+      "events": [
+        {
+          "tx": 2,
+          "change": 0
+        }
+      ]
+    },
+    {
+      "name": "libpq5",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 52
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-base-core",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 8
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-calc",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 3
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-common",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 13
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-core",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 10
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-draw",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 17
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-gnome",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 6
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-gtk3",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 48
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-help-common",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 35
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-help-en-us",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 51
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-impress",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 19
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-math",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 47
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-style-colibre",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 26
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-style-elementary",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 53
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-style-yaru",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 44
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-uiconfig-calc",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 18
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-uiconfig-common",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 45
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-uiconfig-draw",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 30
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-uiconfig-impress",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 9
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-uiconfig-math",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 12
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-uiconfig-writer",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 14
+        }
+      ]
+    },
+    {
+      "name": "libreoffice-writer",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 27
+        }
+      ]
+    },
+    {
+      "name": "librewolf",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 28
+        }
+      ]
+    },
+    {
+      "name": "libsane-hpaio",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 6,
+          "change": 0
+        }
+      ]
+    },
+    {
+      "name": "libuno-cppu3t64",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 49
+        }
+      ]
+    },
+    {
+      "name": "libuno-cppuhelpergcc3-3t64",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 50
+        }
+      ]
+    },
+    {
+      "name": "libuno-purpenvhelpergcc3-3t64",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 54
+        }
+      ]
+    },
+    {
+      "name": "libuno-sal3t64",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 15
+        }
+      ]
+    },
+    {
+      "name": "libuno-salhelpergcc3-3t64",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 55
+        }
+      ]
+    },
+    {
+      "name": "libxdo3",
+      "arch": "amd64",
+      "installed": "1:3.20160805.1-5build1",
+      "autoNow": true,
+      "events": [
+        {
+          "tx": 4,
+          "change": 0
+        }
+      ]
+    },
+    {
+      "name": "lintian",
+      "arch": "all",
+      "installed": "2.117.0ubuntu1.6",
+      "autoNow": true,
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 1
+        }
+      ]
+    },
+    {
+      "name": "linux-firmware-amd-graphics",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 56
+        }
+      ]
+    },
+    {
+      "name": "locales",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 24
+        }
+      ]
+    },
+    {
+      "name": "obsidian",
+      "arch": "amd64",
+      "installed": "1.15.1",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 9,
+          "change": 0
+        }
+      ]
+    },
+    {
+      "name": "ocelotgui",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 1,
+          "change": 0
+        }
+      ]
+    },
+    {
+      "name": "postgresql-14",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 11
+        }
+      ]
+    },
+    {
+      "name": "postgresql-client-14",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 25
+        }
+      ]
+    },
+    {
+      "name": "postgresql-client-common",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 39
+        }
+      ]
+    },
+    {
+      "name": "postgresql-common",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 33
+        }
+      ]
+    },
+    {
+      "name": "printer-driver-hpcups",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 6,
+          "change": 5
+        }
+      ]
+    },
+    {
+      "name": "printer-driver-postscript-hp",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 6,
+          "change": 1
+        }
+      ]
+    },
+    {
+      "name": "python3-distro-info",
+      "arch": "all",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 32
+        }
+      ]
+    },
+    {
+      "name": "python3-pil",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 34
+        }
+      ]
+    },
+    {
+      "name": "python3-pil.imagetk",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 29
+        }
+      ]
+    },
+    {
+      "name": "python3-tornado",
+      "arch": "amd64",
+      "installed": "6.4.0-1ubuntu0.8",
+      "autoNow": true,
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 7,
+          "change": 0
+        }
+      ]
+    },
+    {
+      "name": "python3-uno",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 36
+        }
+      ]
+    },
+    {
+      "name": "snapd",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 31
+        }
+      ]
+    },
+    {
+      "name": "spotify-client",
+      "arch": "amd64",
+      "installed": "1:1.3.4.258.gc60b10b0946a",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 0,
+          "change": 0
+        }
+      ]
+    },
+    {
+      "name": "uno-libs-private",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 7
+        }
+      ]
+    },
+    {
+      "name": "ure",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 16
+        }
+      ]
+    },
+    {
+      "name": "vivaldi-stable",
+      "arch": "amd64",
+      "preHistory": true,
+      "events": [
+        {
+          "tx": 8,
+          "change": 46
+        }
+      ]
+    },
+    {
+      "name": "xdotool",
+      "arch": "amd64",
+      "installed": "1:3.20160805.1-5build1",
+      "events": [
+        {
+          "tx": 4,
+          "change": 1
+        }
+      ]
+    },
+    {
+      "name": "xvfb",
+      "arch": "amd64",
+      "installed": "2:21.1.12-1ubuntu1.9",
+      "events": [
+        {
+          "tx": 4,
+          "change": 2
+        }
+      ]
+    }
+  ],
+  "files": [
+    "../../testdata/real/var/log/apt/history.log",
+    "../../testdata/real/var/log/dpkg.log",
+    "../../testdata/real/var/log/aptitude",
+    "../../testdata/real/var/lib/dpkg/status",
+    "../../testdata/real/var/lib/apt/extended_states"
+  ],
+  "warnings": []
+}

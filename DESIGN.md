@@ -353,6 +353,34 @@ type Report struct {
      source), so use them only for `EtcFiles` and timing hints, never for package history.
    * Packages first seen in etckeeper history are no longer `PreHistory`.
 
+### 5.10 Details settled while building M2
+
+* **Arch names**: a package that dpkg (status or dpkg.log) reports as `Architecture: all` is
+  keyed `name:all` everywhere, though history.log and extended_states write it with the
+  native arch. A package that changed between `any` and `all` (linux-firmware did,
+  amd64 → all) is merged under `all`.
+* **Arch switches and half-done states**: during such a switch dpkg leaves the old instance
+  `half-installed`. Final states are therefore merged per normalised name, and within one run
+  a good state beats a broken one. `Incomplete` means the last state is `half-installed`,
+  `half-configured` or `unpacked`; `triggers-pending` doesn't count.
+* **Tie-break**: a run inside `[Start, End]` beats one only within the 2 s slack. When two
+  transactions are equally close, the later one wins, since apt starts dpkg after `Start-Date`.
+* **Missing End-Date**: the matching window stays open until the next transaction starts
+  (at most 1 h). `End` becomes the latest matched run's end, or `Start` if there is none.
+* **dpkg-only transactions**: unmatched runs ≤ 2 s apart are one invocation (`dpkg -i` logs an
+  unpack run and a configure run). Groups with no install/upgrade/remove/purge (trigger or
+  configure-only runs, a `dpkg -i` that did nothing) are dropped. Upgrades with old = new
+  become `reinstall`. A remove then purge of the same package becomes one `purge`.
+  Downgrades show as `upgrade` until `debversion` exists (M7).
+* **Named**: for apt/apt-get/aptitude command lines, arguments after the verb (stripped of
+  `=ver`, `/release`, `:arch` and aptitude's `+ - _ &` suffixes) mark changes `Named`.
+* **`Report.AptFrom` / `DpkgFrom`**: where each log starts. dpkg runs before `AptFrom` look
+  like dpkg-only transactions, but they may be apt runs whose history.log entry has rotated
+  away. The view should shade that period.
+* **On this machine**: 651 transactions. All 1,459 dpkg runs match an apt transaction, and all
+  3,004 apt changes find their dpkg event. 0 incomplete. 2,779 packages, 2,546 of them
+  PreHistory. 0.07 s, 19 MB RAM, 1.7 MB JSON.
+
 ## 6. Output: the HTML report
 
 One file, default `./apt-history.html`. Built from an `embed`ded `html/template`,
@@ -413,6 +441,7 @@ apt-history-viewer [flags]
       --dpkg-status PATH  override: dpkg status file
       --since DATE        --until DATE   restrict window
       --json              write the Report as JSON instead of HTML (debugging, tests)
+      --raw               write the uncorrelated parse of every log as JSON (debugging)
       --redact            drop usernames and command-line arguments
       --open              open the result with xdg-open
       --host NAME         override the host name shown in the report

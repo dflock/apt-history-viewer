@@ -15,6 +15,7 @@ import (
 	"github.com/dflock/apt-history-viewer/internal/aptitudelog"
 	"github.com/dflock/apt-history-viewer/internal/diag"
 	"github.com/dflock/apt-history-viewer/internal/dpkglog"
+	"github.com/dflock/apt-history-viewer/internal/dpkgstate"
 	"github.com/dflock/apt-history-viewer/internal/logfiles"
 	"github.com/dflock/apt-history-viewer/internal/source"
 )
@@ -22,8 +23,9 @@ import (
 // Overrides point individual logs at paths on the local disk, outside the
 // input (the --apt-dir and --dpkg-log flags).
 type Overrides struct {
-	AptDir  string // directory holding history.log*
-	DpkgLog string // path of dpkg.log; rotations are found alongside
+	AptDir     string // directory holding history.log*
+	DpkgLog    string // path of dpkg.log; rotations are found alongside
+	DpkgStatus string // path of dpkg's status file
 }
 
 // Result is everything read from one input.
@@ -36,6 +38,8 @@ type Result struct {
 	AptHistory      []apthistory.Stanza  `json:"aptHistory"`
 	DpkgRuns        []dpkglog.Run        `json:"dpkgRuns"`
 	AptitudeReports []aptitudelog.Report `json:"aptitudeReports"`
+	DpkgStatus      []dpkgstate.Entry    `json:"dpkgStatus"`    // current packages, for the baseline
+	AutoInstalled   []dpkgstate.Auto     `json:"autoInstalled"` // from extended_states
 	Warnings        []diag.Warning       `json:"warnings"`
 }
 
@@ -121,6 +125,8 @@ func Collect(src *source.Source, ov Overrides, warn *diag.List) *Result {
 		}
 	}
 
+	readState(src, ov, res, display, warn)
+
 	res.Warnings = *warn
 	if res.Warnings == nil {
 		res.Warnings = []diag.Warning{}
@@ -155,4 +161,34 @@ func (r *Result) Span() (from, to time.Time) {
 		see(run.End)
 	}
 	return from, to
+}
+
+// readState reads the current-state files (DESIGN.md §3.3). They are optional:
+// copied logs often come without them, and then there is simply no baseline.
+func readState(src *source.Source, ov Overrides, res *Result, display func(base, p string) string, warn *diag.List) {
+	read := func(fsys fs.FS, base, p string, parse func(io.Reader, string)) {
+		if p == "" {
+			return
+		}
+		name := display(base, p)
+		f, err := fsys.Open(p)
+		if err != nil {
+			warn.Add(name, 0, "cannot open: %v", err)
+			return
+		}
+		defer f.Close()
+		parse(f, name)
+		res.Files = append(res.Files, name)
+	}
+	statusFS, statusBase, statusPath := src.FS, "", src.Layout.DpkgStatus
+	if ov.DpkgStatus != "" {
+		d := filepath.Dir(ov.DpkgStatus)
+		statusFS, statusBase, statusPath = os.DirFS(d), d, filepath.Base(ov.DpkgStatus)
+	}
+	read(statusFS, statusBase, statusPath, func(r io.Reader, name string) {
+		res.DpkgStatus = dpkgstate.ParseStatus(r, name, warn)
+	})
+	read(src.FS, "", src.Layout.ExtendedStates, func(r io.Reader, name string) {
+		res.AutoInstalled = dpkgstate.ParseExtendedStates(r, name, warn)
+	})
 }

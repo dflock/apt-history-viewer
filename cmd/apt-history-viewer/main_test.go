@@ -9,8 +9,10 @@ import (
 	"reflect"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/dflock/apt-history-viewer/internal/collect"
+	"github.com/dflock/apt-history-viewer/internal/model"
 	"github.com/dflock/apt-history-viewer/internal/testutil"
 )
 
@@ -26,30 +28,40 @@ func runCLI(t *testing.T, args ...string) (stdout, stderr string, code int) {
 	return o.String(), e.String(), code
 }
 
-func TestGoldenJSON(t *testing.T) {
-	out, errOut, code := runCLI(t, "--json", "-i", realRel)
-	if code != 0 {
-		t.Fatalf("exit %d: %s", code, errOut)
-	}
-	if errOut != "" {
-		t.Errorf("unexpected stderr: %s", errOut)
-	}
-	golden := testutil.Testdata(t, "golden", "real.json")
-	if *update {
-		if err := os.MkdirAll(filepath.Dir(golden), 0o755); err != nil {
-			t.Fatal(err)
+func TestMain(m *testing.M) {
+	now = func() time.Time { return time.Date(2026, 11, 24, 12, 0, 0, 0, time.UTC) }
+	os.Exit(m.Run())
+}
+
+func TestGolden(t *testing.T) {
+	for _, c := range []struct{ flag, file string }{
+		{"--json", "report.json"}, // the correlated Report
+		{"--raw", "raw.json"},     // the M1 parse
+	} {
+		out, errOut, code := runCLI(t, c.flag, "-i", realRel)
+		if code != 0 {
+			t.Fatalf("%s: exit %d: %s", c.flag, code, errOut)
 		}
-		if err := os.WriteFile(golden, []byte(out), 0o644); err != nil {
-			t.Fatal(err)
+		if errOut != "" {
+			t.Errorf("%s: unexpected stderr: %s", c.flag, errOut)
 		}
-		return
-	}
-	want, err := os.ReadFile(golden)
-	if err != nil {
-		t.Fatalf("%v (run `go test ./cmd/... -update` to create it)", err)
-	}
-	if out != string(want) {
-		t.Errorf("output differs from %s; rerun with -update if the change is intended", golden)
+		golden := testutil.Testdata(t, "golden", c.file)
+		if *update {
+			if err := os.MkdirAll(filepath.Dir(golden), 0o755); err != nil {
+				t.Fatal(err)
+			}
+			if err := os.WriteFile(golden, []byte(out), 0o644); err != nil {
+				t.Fatal(err)
+			}
+			continue
+		}
+		want, err := os.ReadFile(golden)
+		if err != nil {
+			t.Fatalf("%v (run `go test ./cmd/... -update` to create it)", err)
+		}
+		if out != string(want) {
+			t.Errorf("output differs from %s; rerun with -update if the change is intended", golden)
+		}
 	}
 }
 
@@ -59,6 +71,8 @@ type parsed struct {
 	Hist     []any
 	Runs     []any
 	Reps     []any
+	Status   []any
+	Auto     []any
 }
 
 func normalise(t *testing.T, js string) parsed {
@@ -84,6 +98,12 @@ func normalise(t *testing.T, js string) parsed {
 	for _, x := range r.AptitudeReports {
 		x.File, x.Line = "", 0
 		p.Reps = append(p.Reps, x)
+	}
+	for _, x := range r.DpkgStatus {
+		p.Status = append(p.Status, x)
+	}
+	for _, x := range r.AutoInstalled {
+		p.Auto = append(p.Auto, x)
 	}
 	return p
 }
@@ -121,15 +141,16 @@ func TestAllInputFormsAgree(t *testing.T) {
 
 	var want parsed
 	for _, name := range []string{"dir", "rotated dir", "flat dir", "tar", "tgz nested", "flat tar.gz"} {
-		out, errOut, code := runCLI(t, "--json", "-i", inputs[name])
+		out, errOut, code := runCLI(t, "--raw", "-i", inputs[name])
 		if code != 0 {
 			t.Fatalf("%s: exit %d: %s", name, code, errOut)
 		}
 		got := normalise(t, out)
 		if name == "dir" {
 			want = got
-			if len(want.Hist) != 10 || len(want.Runs) != 24 || len(want.Reps) != 1 {
-				t.Fatalf("baseline counts: %d stanzas, %d runs, %d reports", len(want.Hist), len(want.Runs), len(want.Reps))
+			if len(want.Hist) != 10 || len(want.Runs) != 24 || len(want.Reps) != 1 || len(want.Status) != 16 || len(want.Auto) != 8 {
+				t.Fatalf("baseline counts: %d stanzas, %d runs, %d reports, %d status, %d auto",
+					len(want.Hist), len(want.Runs), len(want.Reps), len(want.Status), len(want.Auto))
 			}
 			continue
 		}
@@ -144,11 +165,11 @@ func TestMultipleInputsGiveArray(t *testing.T) {
 	if code != 0 {
 		t.Fatalf("exit %d: %s", code, errOut)
 	}
-	var rs []collect.Result
+	var rs []model.Report
 	if err := json.Unmarshal([]byte(out), &rs); err != nil {
 		t.Fatal(err)
 	}
-	if len(rs) != 2 || rs[1].Host != "pkhost" || len(rs[1].AptHistory) != 3 {
+	if len(rs) != 2 || rs[1].Host != "pkhost" || len(rs[1].Transactions) != 3 || rs[1].HasBaseline {
 		t.Errorf("results = %d, second host %q", len(rs), rs[1].Host)
 	}
 	// root-packagekit has no dpkg log and no timezone: warn, don't fail.
@@ -162,6 +183,9 @@ func TestMultipleInputsGiveArray(t *testing.T) {
 func TestExitCodes(t *testing.T) {
 	if _, _, code := runCLI(t, "-i", realRel); code != 2 {
 		t.Errorf("without --json: exit %d, want 2 (HTML not implemented yet)", code)
+	}
+	if _, errOut, code := runCLI(t, "--json", "-i", realRel, "-i", realRel, "--dpkg-status", "x"); code != 2 || !strings.Contains(errOut, "single --input") {
+		t.Errorf("override with two inputs: exit %d, %s", code, errOut)
 	}
 	if _, errOut, code := runCLI(t, "--json", "-i", t.TempDir()); code != 1 || !strings.Contains(errOut, "no apt or dpkg logs") {
 		t.Errorf("empty dir: exit %d, %s", code, errOut)
@@ -181,7 +205,8 @@ func TestOverridesAndHost(t *testing.T) {
 	dir := testutil.WriteTree(t, map[string][]byte{"etc/timezone": []byte("Etc/UTC\n")})
 	aptDir := testutil.Testdata(t, "real", "var", "log", "apt")
 	dpkgLog := testutil.Testdata(t, "real", "var", "log", "dpkg.log")
-	out, errOut, code := runCLI(t, "--json", "-i", dir, "--apt-dir", aptDir, "--dpkg-log", dpkgLog, "--host", "renamed")
+	status := testutil.Testdata(t, "real", "var", "lib", "dpkg", "status")
+	out, errOut, code := runCLI(t, "--raw", "-i", dir, "--apt-dir", aptDir, "--dpkg-log", dpkgLog, "--dpkg-status", status, "--host", "renamed")
 	if code != 0 {
 		t.Fatalf("exit %d: %s", code, errOut)
 	}
@@ -189,8 +214,8 @@ func TestOverridesAndHost(t *testing.T) {
 	if err := json.Unmarshal([]byte(out), &r); err != nil {
 		t.Fatal(err)
 	}
-	if r.Host != "renamed" || len(r.AptHistory) != 10 || len(r.DpkgRuns) != 24 {
-		t.Errorf("host %q, %d stanzas, %d runs", r.Host, len(r.AptHistory), len(r.DpkgRuns))
+	if r.Host != "renamed" || len(r.AptHistory) != 10 || len(r.DpkgRuns) != 24 || len(r.DpkgStatus) != 16 {
+		t.Errorf("host %q, %d stanzas, %d runs, %d status", r.Host, len(r.AptHistory), len(r.DpkgRuns), len(r.DpkgStatus))
 	}
 	if r.AptHistory[0].File != filepath.Join(aptDir, "history.log") {
 		t.Errorf("override file name = %q", r.AptHistory[0].File)

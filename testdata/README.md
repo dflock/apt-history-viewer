@@ -73,7 +73,11 @@ history.log stanzas and what each one tests:
 
 | File | Contents |
 |---|---|
-| `real.json` | `--json -i ../../testdata/real` output, checked by `cmd/apt-history-viewer` tests. After an intended output change: `go test ./cmd/... -update`, then review the diff |
+| `report.json` | `--json -i ../../testdata/real`: the correlated Report (M2), with the generation time pinned |
+| `raw.json` | `--raw -i ../../testdata/real`: the uncorrelated parse (M1) |
+
+Both are checked by the `cmd/apt-history-viewer` tests. After an intended output change, run
+`go test ./cmd/... -update` and review the diff.
 
 ## Fuzz corpora
 

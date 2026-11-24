@@ -1,8 +1,8 @@
 // Command apt-history-viewer reads apt and dpkg logs and writes a report of a
 // machine's package history. See DESIGN.md.
 //
-// Milestone 1: --json writes the raw parse of every log. The HTML report
-// arrives in Milestone 3.
+// --json writes the correlated Report (Milestone 2); --raw writes the
+// uncorrelated parse of every log. The HTML report arrives in Milestone 3.
 package main
 
 import (
@@ -13,14 +13,19 @@ import (
 	"io"
 	"os"
 	"strings"
+	"time"
 	_ "time/tzdata" // logs from other machines may name zones this host lacks
 
 	"github.com/dflock/apt-history-viewer/internal/collect"
 	"github.com/dflock/apt-history-viewer/internal/diag"
+	"github.com/dflock/apt-history-viewer/internal/model"
 	"github.com/dflock/apt-history-viewer/internal/source"
 )
 
 var version = "dev" // set with -ldflags "-X main.version=…"
+
+// now is the report's generation time; tests pin it.
+var now = time.Now
 
 type stringList []string
 
@@ -31,6 +36,7 @@ type options struct {
 	inputs  stringList
 	output  string
 	json    bool
+	raw     bool
 	host    string
 	ov      collect.Overrides
 	version bool
@@ -48,10 +54,12 @@ func run(args []string, stdout, stderr io.Writer) int {
 	fl.Var(&o.inputs, "i", "shorthand for --input")
 	fl.StringVar(&o.output, "output", "", `output path ("-" = stdout; default stdout for --json)`)
 	fl.StringVar(&o.output, "o", "", "shorthand for --output")
-	fl.BoolVar(&o.json, "json", false, "write the parsed logs as JSON")
+	fl.BoolVar(&o.json, "json", false, "write the report as JSON")
+	fl.BoolVar(&o.raw, "raw", false, "write the uncorrelated parse of every log as JSON (debugging)")
 	fl.StringVar(&o.host, "host", "", "override the host name shown in the report")
 	fl.StringVar(&o.ov.AptDir, "apt-dir", "", "override: directory holding history.log*")
 	fl.StringVar(&o.ov.DpkgLog, "dpkg-log", "", "override: path of dpkg.log (rotations found alongside)")
+	fl.StringVar(&o.ov.DpkgStatus, "dpkg-status", "", "override: path of dpkg's status file")
 	fl.BoolVar(&o.version, "version", false, "print version and exit")
 	if err := fl.Parse(args); err != nil {
 		if errors.Is(err, flag.ErrHelp) {
@@ -67,19 +75,19 @@ func run(args []string, stdout, stderr io.Writer) int {
 		fmt.Fprintln(stdout, version)
 		return 0
 	}
-	if !o.json {
+	if !o.json && !o.raw {
 		fmt.Fprintln(stderr, "the HTML report is not implemented yet (Milestone 3); use --json")
 		return 2
 	}
 	if len(o.inputs) == 0 {
 		o.inputs = stringList{"/"}
 	}
-	if (o.ov.AptDir != "" || o.ov.DpkgLog != "") && len(o.inputs) > 1 {
-		fmt.Fprintln(stderr, "--apt-dir and --dpkg-log can only be used with a single --input")
+	if o.ov != (collect.Overrides{}) && len(o.inputs) > 1 {
+		fmt.Fprintln(stderr, "--apt-dir, --dpkg-log and --dpkg-status can only be used with a single --input")
 		return 2
 	}
 
-	var results []*collect.Result
+	var results []any
 	anyData := false
 	for _, in := range o.inputs {
 		var warn diag.List
@@ -96,7 +104,11 @@ func run(args []string, stdout, stderr io.Writer) int {
 			fmt.Fprintf(stderr, "warning: %s\n", w)
 		}
 		anyData = anyData || !res.Empty()
-		results = append(results, res)
+		if o.raw {
+			results = append(results, res)
+		} else {
+			results = append(results, model.Build(res, now()))
+		}
 	}
 	if !anyData {
 		fmt.Fprintln(stderr, "error: no apt or dpkg logs could be read")
